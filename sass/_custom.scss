@@ -1,0 +1,206 @@
+/* ============ ADD HERE YOUR CUSTOM SCSS or  plain CSS CODE. ============ 
+
+HOW DOES IT WORK?
+
+    Edit this file, save, 
+    view page as admin:
+    The style will be AUTOMATICALLY recompiled and 
+    your new CSS bundle will be reloaded via ajax to show 
+    the new styling edits.
+
+NOTICE for beginners: 
+
+    CODE HERE YOUR MASTERPIECE, but before that, if you haven't yet,
+    please take your time to understand and study how Bootstrap works.
+    It can save you a lot of time,
+    eg. to standardize project colors, or fully customize typography.
+    First of all, have a ride in the WordPress Customizer.
+    Then learn to use Bootstrap 5 Classes and utilities.
+    If you come from the CSS world, take some time to study the basic of SASS. It's very powerful.
+    With great powers...you are warned 
+
+
+IMPORTANT NOTE REGARDING REFERENCING ELEMENTS IN THE THEME FOLDER
+    Please access those prepending ../ in the path, as the rendered CSS
+    that is executed from the browser is in the /css-output/ theme subfolder    
+
+
+************************************************		*/
+//a demo statement - uncomment to see page turn red and blush
+//body { background: red; opacity: 0.4;border:5px solid yellow}  
+
+//open menus on hover
+//.dropdown:hover>.dropdown-menu { display: block;}
+  
+
+//PAGE HAS SCROLLED: From the Customizer, enable the "Scroll Detection" feature to be able to use the classes:
+
+//body.scroll-position-at-top  {background:lime}
+//body.scroll-position-not-at-top {background:red}
+
+ 
+//HOW TO INCLUDE A CUSTOM FONT
+//1. Upload the .woff2 font file in the /fonts/ folder 
+//2. Adjust and use the code snippet below
+//3. Open the Customizer and declare the font in the "Font Family Base" / "Headings Font Family" field
+
+//include custom font
+//@font-face {
+//  font-family: 'Playfair Display';
+//  src: url('../fonts/playfair-display.woff2') format('woff2');
+//}
+ 
+
+@font-face {
+    font-family: Canela Trial;
+     src: url('../fonts/Canela-Trial.woff') format('woff2');
+     font-display: swap;
+}
+@font-face {
+    font-family: Sharp Sans;
+     src: url('../fonts/Sharp-Sans.woff') format('woff2');
+     font-display: swap;
+}
+h1,h2,.fs-1,.fs-2{
+    font-family: Canela Trial;
+}
+body{
+    background: #F6F6F6;
+    font-family: Sharp Sans;
+}
+.links-custom-btn,.links-custom-btn:hover{
+    color: #C0832B;
+    font-family: Sharp Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.body-text-dark{
+    color: #2D2D2D;
+}
+.body-text-light{
+    color: #6D6D6D;
+}
+
+
+
+.main-heading{
+    color: #2D2D2D;
+    font-family: Canela Trial;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.caption-text{
+    color: #6D6D6D;
+    font-family: Sharp Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.main-text{
+    color: #6D6D6D;
+    font-family: Sharp Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 141.5%; /* 16.98px */
+}
+
+
+.card-main-title{
+    color: #2D2D2D;
+    text-align: center;
+    font-family: Canela Trial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 20.8px */
+    letter-spacing: 0.32px;
+}
+.card-sub-title{
+    color: #6D6D6D;
+    text-align: center;
+    font-family: Sharp Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.logos-text{
+    color: #282828;
+        font-family: Sharp Sans;
+        font-size: 13.344px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%; /* 17.347px */
+        letter-spacing: 0.267px;
+}
+
+@media(min-width:768px){
+    .logos-text{
+        color: #282828;
+    font-family: Sharp Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 26px */
+    letter-spacing: 0.4px;
+    }
+    .links-custom-btn,.links-custom-btn:hover{
+        color: #C0832B;
+        font-family: Sharp Sans;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        text-decoration: none;
+    }
+    .main-heading{
+        color: #2D2D2D;
+        font-family: Canela Trial;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .caption-text{
+        color: #6D6D6D;
+        font-family: Sharp Sans;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+    .main-text{
+        color: #6D6D6D;
+        font-family: Sharp Sans;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+    }
+    .card-main-title{
+        color: #2D2D2D;
+        text-align: center;
+        font-family: Canela Trial;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%; /* 31.2px */
+        letter-spacing: 0.48px;
+    }
+    .card-sub-title{
+        color: #6D6D6D;
+        text-align: center;
+        font-family: Sharp Sans;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+}
