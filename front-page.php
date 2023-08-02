@@ -1,13 +1,102 @@
 <?php
+/* Template Name: Home Page */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
 get_header();
 ?>
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 
-<div class="container mb-5">
+
+<div class="main-slider-section">
+    <div class="container-fluid">
+        <div class="row" data-flickity='{ "cellAlign": "left", "contain": true}'>
+
+            <?php if (have_rows('slider_section')) : ?>
+                <?php while (have_rows('slider_section')) : the_row();
+                    $slide_desktop_image = get_sub_field('slide_image');
+                    $slide_mobile_image = get_sub_field('slide_mobile_image');
+                    $slide_slide_icon = get_sub_field('slide_icon');
+                    $slide_slide_caption = get_sub_field('slide_caption');
+                    $slide_slide_title = get_sub_field('slide_title');
+                    $slide_slide_text = get_sub_field('slide_text');
+                    $slide_slide_link = get_sub_field('slide_link');
+                    $slide_slide_link_text = get_sub_field('slide_link_text');
+                ?>
+                    <div class="col-12">
+                        <div class="main-slider-section_item">
+                            <picture>
+                                <source media="(max-width:768px)" srcset="<?php echo esc_url($slide_mobile_image['url']); ?>">
+                                <img class="img-fluid" src="<?php echo esc_url($slide_desktop_image['url']); ?>" alt="">
+                            </picture>
+                            <div class="main-slider-section_item-content">
+                                <div class="main-slider-section_item-content_wrapper">
+                                    <?php if ($slide_slide_icon) : ?>
+                                        <div>
+                                            <img class="img-fluid" width="85" height="63" src="<?php echo esc_url($slide_slide_icon['url']); ?>" alt="">
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if ($slide_slide_caption) : ?>
+                                        <div class="fs-5 text-white mb-1"><?php echo $slide_slide_caption ?></div>
+                                    <?php endif; ?>
+                                    <?php if ($slide_slide_title) : ?>
+                                        <div class="display-1 text-white mb-1"><?php echo $slide_slide_title ?></div>
+                                    <?php endif; ?>
+                                    <?php if ($slide_slide_text) : ?>
+                                        <div class="fs-5 text-white mb-2 w-75"><?php echo $slide_slide_text ?></div>
+                                    <?php endif; ?>
+                                    <?php if ($slide_slide_link && $slide_slide_link_text) : ?>
+                                        <a class="btn btn-outline-light px-4 py-2" href="<?php echo $slide_slide_link ?>"><?php echo $slide_slide_link_text ?></a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php endwhile; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
+
+
+
+<section class="bg-white">
+    <div class="container p-5">
+        <div class="swiper-logos">
+            <div class="row" data-flickity='{ "cellAlign": "left", "contain": true, "pageDots": false,"prevNextButtons":false,"freeScroll": true}'>
+               
+
+            <?php if (have_rows('logo_with_text_section')) : ?>
+                <?php while (have_rows('logo_with_text_section')) : the_row();
+                    $logo_image = get_sub_field('logo_image');
+                    $logo_text = get_sub_field('logo_text');
+                ?>
+            
+            <div class="swiper-slide">
+                    <div class="d-flex align-items-center">
+                        <div>
+                        <img class="img-fluid" width="40" height="40" src="<?php echo esc_url($logo_image['url']); ?>" alt="">
+                        </div>
+                        <div>
+                            <div class="ps-2 text-start logos-text"><?php echo $logo_text ?></div>
+                        </div>
+                    </div>
+            </div>
+                
+            <?php endwhile; ?>
+            <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-12 d-flex overflow-auto">
            <div class="col collection-slider-items">
@@ -52,8 +141,11 @@ get_header();
             <div class="row card-body mb-3 mb-lg-4">
                 <div class="col-xl-11 col-xxl-9 mx-auto text-white">
                     <div class="lc-block">
-                        <div class="main-heading text-white mb-3">Designed For Everyday Glamour</div>
-                        <div class="caption-text text-white">Creating jewellery that is exquisitely made with care, passion, and love. <span><a class="view-more-link" href="#">View more.</a></span></div>
+                    <?php
+                    $textBlock = get_field('text_block_section'); 
+                        ?>
+                        <div class="main-heading text-white mb-3"><?php echo $textBlock['text_block_title']; ?></div>
+                        <div class="caption-text text-white"><?php echo $textBlock['text_block_content']; ?> <span><a class="view-more-link" href="<?php echo $textBlock['text_block_link']; ?>">View more.</a></span></div>
                     </div>
                 </div>
             </div>
@@ -61,11 +153,16 @@ get_header();
 </div>
 
 
+
+
 <div class="container-fluid mb-5">
     <div class="row">
+                    <?php
+                    $textBlock = get_field('video_section'); 
+                        ?>
         <div class="col-12">
-            <video controls class="homepage-video" width="320" height="240" poster="/wp-content/uploads/2023/08/video-banner.webp">
-            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+            <video controls class="homepage-video" width="320" height="240" poster="<?php echo $textBlock['video_poster']; ?>">
+            <source src="<?php echo $textBlock['video_url']; ?>" type="video/mp4">
             Your browser does not support the video tag.
             </video>
         </div>
@@ -235,46 +332,7 @@ get_header();
 
 
 
-  
 
-
-
-<script>
-        function initializeSwiperRANDOMID() {
-         
-            // Launch SwiperJS  
-            const swiper = new Swiper('.swiper-logos', {
-        		// Default parameters
-        		slidesPerView: 2,
-        		spaceBetween: 10,
-        		grabCursor: true,
-        		
-        		// Responsive breakpoints
-        		breakpoints: {
-        		// when window width is >= 320px
-        		320: {
-        		 slidesPerView: 1,
-        		 spaceBetween: 20
-        		},
-        		// when window width is >= 480px
-        		480: {
-        		 slidesPerView: 2,
-        		 spaceBetween: 30
-        		},
-                // when window width is >= 680px
-        		740: {
-        		 slidesPerView: 3,
-        		 spaceBetween: 30
-        		},
-        		// when window width is >= 1040px
-        		1040: {
-        		 slidesPerView: 5,
-        		 spaceBetween: 40
-        		}
-        		}
-        	});
-        }
-    </script>
 
 
 <?php get_footer();
