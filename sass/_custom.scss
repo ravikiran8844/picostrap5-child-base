@@ -73,12 +73,41 @@ body{
     max-width: 220px;
 
 }
+.text-color-red{
+    color: #A0222C !important;
+}
 .swiper-slides{
 flex-wrap: nowrap;
 }
 .swiper-slide{
     width: 210px;
     margin-right: 10px;
+}
+.category-container{
+    width: 283px;
+    border: 1px solid #C2C2C2;
+    background-color: #fff;
+}
+.category-container_content{
+    background: #F6F6F6;
+}
+.category-container__content-title{
+    color: #282828;
+text-align: center;
+font-family: Sharp Sans;
+font-size: 14.074px;
+font-style: normal;
+font-weight: 500;
+line-height: 130%; /* 18.297px */
+letter-spacing: 0.281px;
+}
+.card_blocks-item_img-wrapper{
+    width: 65px;
+    height: 65px;
+    margin: auto;
+}
+.card_blocks-item{
+    height: 100%;
 }
 .main-slider-section_item{
     position: relative;
@@ -348,6 +377,27 @@ line-height: 140%; /* 16.8px */
     border-top: 1px solid #CA4F5A;
     padding: 10px;
 }
+.product-card-price{
+    color: #A0222C;
+text-align: center;
+font-family: Sharp Sans;
+font-size: 19.343px;
+font-style: normal;
+font-weight: 700;
+line-height: 100%; /* 19.343px */
+}
+.product-card-buy-btn,.product-card-buy-btn:hover{
+    width: 100%;
+    border-radius: 4.429px;
+    border: 0.886px solid #D3D3D3;
+    color: #222;
+    text-align: center;
+    font-family: Sharp Sans;
+    font-size: 13.181px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 148.5%; /* 19.573px */
+}
 @media(min-width:768px){
     .main-slider-section_item-content{
         position: absolute;
@@ -523,5 +573,37 @@ text-transform: uppercase;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
+    }
+    .product-card-price{
+        color: #A0222C;
+        text-align: center;
+        font-family: Sharp Sans;
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 100%; /* 26px */
+    }
+    .product-card-buy-btn,.product-card-buy-btn:hover{
+        width: 100%;
+        border-radius: 4.429px;
+        border: 0.886px solid #D3D3D3;
+        color: #222;
+        text-align: center;
+        font-family: Sharp Sans;
+        font-size: 17.717px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 148.5%; /* 26.31px */
+        text-transform: uppercase;
+    }
+    .category-container__content-title{
+        color: #282828;
+        text-align: center;
+        font-family: Sharp Sans;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%; /* 26px */
+        letter-spacing: 0.4px;
     }
 }
