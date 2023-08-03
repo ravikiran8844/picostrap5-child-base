@@ -225,10 +225,10 @@ get_header();
                             <button class="nav-link" id="earnings-tab" data-bs-toggle="tab" data-bs-target="#earnings" type="button" role="tab" aria-controls="earnings" aria-selected="false">Earnings</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="necklace-tab" data-bs-toggle="tab" data-bs-target="#necklace" type="button" role="tab" aria-controls="necklace" aria-selected="false">necklace</button>
+                            <button class="nav-link" id="necklace-tab" data-bs-toggle="tab" data-bs-target="#necklace" type="button" role="tab" aria-controls="necklace" aria-selected="false">Necklace</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="braclets-tab" data-bs-toggle="tab" data-bs-target="#braclets" type="button" role="tab" aria-controls="braclets" aria-selected="false">braclets</button>
+                            <button class="nav-link" id="braclets-tab" data-bs-toggle="tab" data-bs-target="#braclets" type="button" role="tab" aria-controls="braclets" aria-selected="false">Braclets</button>
                         </li>
                     </ul>
                 </div>  
@@ -869,6 +869,7 @@ for ( var i = 0; i < elms.length; i++ )
   new Splide(elms[i], {
     type: 'slide',              // Loop the slides
     perPage: 3,                // Show 3 slides per view
+    
     perMove: 1,                // Move 1 slide at a time
     gap: '1rem',               // Gap between slides
     autoplay: false,            // Autoplay the slider

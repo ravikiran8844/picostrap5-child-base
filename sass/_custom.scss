@@ -86,6 +86,37 @@ flex-wrap: nowrap;
     width: 210px;
     margin-right: 10px;
 }
+
+
+
+.products-slider-section .nav-item .nav-link{
+    background-color: transparent;
+    color: #4D4D4D;
+    font-family: Sharp Sans;
+    font-size: 12.635px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.948px;
+    border: none !important;
+    
+}
+.products-slider-section .nav-item .nav-link.active{
+    background-color: transparent;
+    color: #4D4D4D;
+    font-family: Sharp Sans;
+    font-size: 12.635px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.948px;
+    border-bottom: 1px solid #4D4D4D !important;
+}
+.products-slider-section .nav-tabs{
+    border-bottom: none;
+
+}
+
 .shop-by-category_img-wrapper{
     width: 283px;
     min-height: 250px;
@@ -420,6 +451,29 @@ line-height: 100%; /* 19.343px */
     line-height: 148.5%; /* 19.573px */
 }
 @media(min-width:768px){
+    .products-slider-section .nav-item .nav-link{
+        background-color: transparent;
+        color: #4D4D4D;
+        font-family: Sharp Sans;
+        font-size: 19px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 1.425px;
+        border: none !important;
+        
+    }
+    .products-slider-section .nav-item .nav-link.active{
+        background-color: transparent;
+        color: #4D4D4D;
+        font-family: Sharp Sans;
+        font-size: 19px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 1.425px;
+        border-bottom: 1px solid #4D4D4D !important;
+    }
     .main-slider-section_item-content{
         position: absolute;
         top: 0;
