@@ -9,6 +9,11 @@ get_header();
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/splidejs/4.1.4/js/splide.min.js" integrity="sha512-4TcjHXQMLM7Y6eqfiasrsnRCc8D/unDeY1UGKGgfwyLUCTsHYMxF7/UHayjItKQKIoP6TTQ6AMamb9w2GMAvNg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/splidejs/4.1.4/css/splide.min.css" integrity="sha512-KhFXpe+VJEu5HYbJyKQs9VvwGB+jQepqb4ZnlhUF/jQGxYJcjdxOTf6cr445hOc791FFLs18DKVpfrQnONOB1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 <div class="main-slider-section">
     <div class="container-fluid">
         <div class="row" data-flickity='{ "cellAlign": "left", "contain": true}'>
@@ -66,7 +71,7 @@ get_header();
 <section class="bg-white">
     <div class="container p-5">
         <div class="swiper-logos">
-            <div class="row" data-flickity='{ "cellAlign": "left", "contain": true, "pageDots": false,"prevNextButtons":false,"freeScroll": true}'>
+            <div class="row" data-flickity='{ "cellAlign": "left", "contain": true, "pageDots": false,"prevNextButtons":false,"freeScroll": true,"groupCells": true}'>
                
 
             <?php if (have_rows('logo_with_text_section')) : ?>
@@ -99,51 +104,54 @@ get_header();
 <div class="shop-by-category container mt-5">
     <div class="row">
         <div class="col-12 mb-4">
-                <div class="main-heading text-color-red">Shop by Category</div>
+            <div class="main-heading text-color-red">Shop by Category</div>
         </div>
     </div>
-    <div class="row"  data-flickity='{ "cellAlign": "left", "contain": true, "pageDots": false,"prevNextButtons":true,"freeScroll": true}'>
+    <div class="row"  data-flickity='{ "cellAlign": "left", "contain": true, "pageDots": false, "prevNextButtons": true, "freeScroll": true, "groupCells": true}'>
         <?php
 
-       // Get product categories excluding Uncategorized
-        $product_categories = get_terms( 'product_cat', array(
-            'hide_empty' => false,
-            'exclude' => array( get_option( 'default_product_cat' ) ), // Exclude Uncategorized
-        ) );
+        // Get the parent category term object (e.g., "gold")
+        $parent_category_slug = 'gold';
+        $parent_category = get_term_by('slug', $parent_category_slug, 'product_cat');
 
-        // Loop through product categories
-        foreach ( $product_categories as $category ) {
-            $category_id = $category->term_id;
-            $category_name = $category->name;
-            $category_permalink = get_term_link( $category, 'product_cat' );
+        if ($parent_category) {
+            // Get child categories of the parent category
+            $child_categories = get_terms('product_cat', array(
+                'hide_empty' => false,
+                'parent' => $parent_category->term_id,
+            ));
 
+            // Loop through child categories
+            foreach ($child_categories as $category) {
+                $category_id = $category->term_id;
+                $category_name = $category->name;
+                $category_permalink = get_term_link($category, 'product_cat');
 
-            // Get category image
-            $thumbnail_id = get_woocommerce_term_meta( $category_id, 'thumbnail_id', true );
-            $image = wp_get_attachment_image_src( $thumbnail_id, 'thumbnail' );
+                // Get category image
+                $thumbnail_id = get_woocommerce_term_meta($category_id, 'thumbnail_id', true);
+                $image = wp_get_attachment_image_src($thumbnail_id, 'thumbnail');
 
-             // Display category with container
-                echo '<div class="col p-3"><div class="text-center  category-container mb-4">';
+                // Display category with container
+                echo '<div class="col p-3"><div class="text-center category-container mb-4">';
                 
-                
-                if ( $image ) {
-                    echo '<img class="img-fluid m-auto mb-4" src="' . esc_url( $image[0] ) . '"  width="180" height="180" alt="' . esc_attr( $category_name ) . '" />';
+                if ($image) {
+                    echo '<div class="shop-by-category_img-wrapper"><img class="img-fluid mb-4" src="' . esc_url($image[0]) . '"  width="180" height="180" alt="' . esc_attr($category_name) . '" /></div>';
                 }
                 
                 echo '<div class="category-container_content py-4">';
-
                 echo '<div class="category-container__content-title">' . $category_name . '</div>';
-                echo '<div class="mt-1"><a class="links-custom-btn" href="' . esc_url( $category_permalink ) . '">Explore <span><svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.879 3.59456L12.2054 0.551057C12.1666 0.507759 12.1203 0.473516 12.0693 0.450041C12.0182 0.426566 11.9634 0.414429 11.9081 0.414429C11.8527 0.414429 11.7979 0.426566 11.7468 0.450041C11.6958 0.473516 11.6495 0.507759 11.6107 0.551057C11.5335 0.642757 11.4907 0.762918 11.4907 0.887664C11.4907 1.01241 11.5335 1.13257 11.6107 1.22427L13.5742 3.4545H1.36426C1.24891 3.4545 1.13829 3.50478 1.05672 3.59421C0.975158 3.68365 0.929302 3.80503 0.929302 3.93151C0.929302 4.05798 0.975158 4.17902 1.05672 4.26846C1.13829 4.35789 1.24891 4.40817 1.36426 4.40817H13.5742L11.6107 6.6384C11.5335 6.7301 11.4907 6.85026 11.4907 6.97501C11.4907 7.09975 11.5335 7.21991 11.6107 7.31161C11.649 7.35588 11.6951 7.39094 11.7462 7.41503C11.7973 7.43912 11.8524 7.45167 11.9081 7.45167C11.9637 7.45167 12.0188 7.43912 12.0699 7.41503C12.121 7.39094 12.1671 7.35588 12.2054 7.31161L14.879 4.26811C14.959 4.17802 15.0038 4.05726 15.0038 3.93151C15.0038 3.80576 14.959 3.68465 14.879 3.59456Z" fill="#C0832B"/>
+                echo '<div class="mt-1"><a class="links-custom-btn" href="' . esc_url($category_permalink) . '">Explore <span><svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.879 3.59456L12.2054 0.551057C12.1666 0.507759 12.1203 0.473516 12.0693 0.450041C12.0182 0.426566 11.9634 0.414429 11.9081 0.414429C11.8527 0.414429 11.7979 0.426566 11.7468 0.450041C11.6958 0.473516 11.6495 0.507759 11.6107 0.551057C11.5335 0.642757 11.4907 0.762918 11.4907 0.887664C11.4907 1.01241 11.5335 1.13257 11.6107 1.22427L13.5742 3.4545H1.36426C1.24891 3.4545 1.13829 3.50478 1.05672 3.59421C0.975158 3.68365 0.929302 3.80503 0.929302 3.93151C0.929302 4.05798 0.975158 4.17902 1.05672 4.26846C1.13829 4.35789 1.24891 4.40817 1.36426 4.40817H13.5742L11.6107 6.6384C11.5335 6.7301 11.4907 6.85026 11.4907 6.97501C11.4907 7.09975 11.5335 7.21991 11.6107 7.31161C11.649 7.35588 11.6951 7.39094 11.7462 7.41503C11.7973 7.43912 11.8524 7.45167 11.9081 7.45167C11.9637 7.45167 12.0188 7.43912 12.0699 7.41503C12.121 7.39094 12.1671 7.35588 12.2054 7.31161L14.879 4.26811C14.959 4.17802 15.0038 4.05726 15.0038 3.93151C15.0038 3.80576 14.959 3.68465 14.879 3.59456Z" fill="#C0832B"/>
                 </svg>
                 </span> </a></div>';
-
                 
                 echo '</div></div></div>'; // Close category container
+            }
         }
         ?>
     </div>
 </div>
+
 
 
 
@@ -175,6 +183,8 @@ get_header();
         </div>
     </div>
 </div>
+
+
 
 
 <div class="container-lg p-0 text-center mb-5">
@@ -228,69 +238,458 @@ get_header();
 
     <div class="tab-content row" id="myTabContent">
         <div class="tab-pane fade show active splide__slide" id="trending" role="tabpanel" aria-labelledby="trending-tab">
-        <div class="col-12"  data-flickity='{ "cellAlign": "left", "contain": true, "pageDots": false,"prevNextButtons":true,"freeScroll": true}'>
-                    <?php
+        <section id="slider1" class="splide" aria-label="Splide Basic HTML Example">
+                <div class="splide__track">
+                        
+                <ul class="splide__list">
+                <?php
+                     $args = array(
+                        'post_type' => 'product',
+                        'posts_per_page' => 8,
+                        'post_status' => 'publish',
+                        'tax_query' =>
+                            array(
+                                'taxonomy' => 'product_cat',
+                                'field' => 'slug',
+                                'terms' => 'gold'
+                            )
+                    );
+                    $loop = new WP_Query($args);
+
+                    if ($loop->have_posts()) {
+                        while ($loop->have_posts()) : $loop->the_post();
+                            ?>
+
+                                <li class="splide__slide product-slider-item text-center px-4 mb-4">
+                                    <?php
+                                    // Get product image
+                                    $product_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'single-post-thumbnail');
+                                    ?>
+
+                                    <img width="357" height="462" src="<?php echo $product_image[0]; ?>"  alt="<?php the_title(); ?>" />
+
+                                    <div class="mt-3 mb-2 card-main-title"><?php the_title(); ?></div>
+                                    <?php
+                                    // Get product review count and rating
+                                    $review_count = get_comments_number();
+                                    // $average_rating = get_post_meta(get_the_ID(), '_wc_average_rating', true);
+                                    ?>
+
+                                    <div class="card-sub-title mb-3"> <span class="me-2"><svg width="97" height="17" viewBox="0 0 97 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.9313 0.886719L10.381 5.95721L15.8575 6.76869L11.8944 10.7124L12.8308 16.2843L7.9313 13.6534L3.03181 16.2843L3.96818 10.7124L0 6.76869L5.48155 5.95721L7.9313 0.886719Z" fill="#C79144"/>
+                                            <path d="M27.9586 0.886719L30.4084 5.95721L35.8849 6.76869L31.9218 10.7124L32.8581 16.2843L27.9586 13.6534L23.0592 16.2843L23.9955 10.7124L20.0273 6.76869L25.5089 5.95721L27.9586 0.886719Z" fill="#C79144"/>
+                                            <path d="M47.9887 0.886719L50.4385 5.95721L55.915 6.76869L51.9519 10.7124L52.8882 16.2843L47.9887 13.6534L43.0892 16.2843L44.0256 10.7124L40.0625 6.76869L45.539 5.95721L47.9887 0.886719Z" fill="#C79144"/>
+                                            <path d="M68.602 0.886719L71.0518 5.95721L76.5283 6.76869L72.5651 10.7124L73.5015 16.2843L68.602 13.6534L63.7025 16.2843L64.6389 10.7124L60.6758 6.76869L66.1523 5.95721L68.602 0.886719Z" fill="#C79144"/>
+                                            <path d="M88.6294 0.886719L91.0791 5.95721L96.5556 6.76869L92.5925 10.7124L93.5288 16.2843L88.6294 13.6534L83.7299 16.2843L84.6662 10.7124L80.7031 6.76869L86.1796 5.95721L88.6294 0.886719Z" fill="#C79144"/>
+                                            </svg>
+                                            </span> <span><?php echo $review_count; ?> reviews</span></div>
+                                    <!-- <div>Average Rating: <?php echo $average_rating; ?></div> -->
+
+                                    <?php
+                                    // Get product price
+                                    $product = wc_get_product(get_the_ID());
+                                    $product_price = $product->get_price();
+                                    ?>
+
+                                    <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
+
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
+                                </li>
+                        <?php
+                            endwhile;
+                        } else {
+                            echo __('No products found');
+                        }
+                        wp_reset_postdata();
+                        ?>
+            </ul>
+
+                </div>
+            </section>
+        </div>
+        <div class="tab-pane fade" id="new-in" role="tabpanel" aria-labelledby="new-in-tab">
+        <section id="slider2" class="splide" aria-label="Splide Basic HTML Example">
+                <div class="splide__track">
+                        
+                <ul class="splide__list">
+                <?php
+                      $args = array(
+                        'post_type' => 'product',
+                        'posts_per_page' => 8,
+                        'post_status' => 'publish',
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'product_cat',
+                                'field' => 'slug',
+                                'terms' => 'gold'
+                            )
+                        ),
+                        'orderby' => 'date',       // Sort by publish date
+                        'order' => 'DESC'          // Display newest products first
+                    );
+                    $loop = new WP_Query($args);
+
+                    if ($loop->have_posts()) {
+                        while ($loop->have_posts()) : $loop->the_post();
+                            ?>
+
+                                <li class="splide__slide product-slider-item text-center px-4 mb-4">
+                                    <?php
+                                    // Get product image
+                                    $product_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'single-post-thumbnail');
+                                    ?>
+
+                                    <img width="357" height="462" src="<?php echo $product_image[0]; ?>"  alt="<?php the_title(); ?>" />
+
+                                    <div class="mt-3 mb-2 card-main-title"><?php the_title(); ?></div>
+                                    <?php
+                                    // Get product review count and rating
+                                    $review_count = get_comments_number();
+                                    // $average_rating = get_post_meta(get_the_ID(), '_wc_average_rating', true);
+                                    ?>
+
+                                    <div class="card-sub-title mb-3"> <span class="me-2"><svg width="97" height="17" viewBox="0 0 97 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.9313 0.886719L10.381 5.95721L15.8575 6.76869L11.8944 10.7124L12.8308 16.2843L7.9313 13.6534L3.03181 16.2843L3.96818 10.7124L0 6.76869L5.48155 5.95721L7.9313 0.886719Z" fill="#C79144"/>
+                                            <path d="M27.9586 0.886719L30.4084 5.95721L35.8849 6.76869L31.9218 10.7124L32.8581 16.2843L27.9586 13.6534L23.0592 16.2843L23.9955 10.7124L20.0273 6.76869L25.5089 5.95721L27.9586 0.886719Z" fill="#C79144"/>
+                                            <path d="M47.9887 0.886719L50.4385 5.95721L55.915 6.76869L51.9519 10.7124L52.8882 16.2843L47.9887 13.6534L43.0892 16.2843L44.0256 10.7124L40.0625 6.76869L45.539 5.95721L47.9887 0.886719Z" fill="#C79144"/>
+                                            <path d="M68.602 0.886719L71.0518 5.95721L76.5283 6.76869L72.5651 10.7124L73.5015 16.2843L68.602 13.6534L63.7025 16.2843L64.6389 10.7124L60.6758 6.76869L66.1523 5.95721L68.602 0.886719Z" fill="#C79144"/>
+                                            <path d="M88.6294 0.886719L91.0791 5.95721L96.5556 6.76869L92.5925 10.7124L93.5288 16.2843L88.6294 13.6534L83.7299 16.2843L84.6662 10.7124L80.7031 6.76869L86.1796 5.95721L88.6294 0.886719Z" fill="#C79144"/>
+                                            </svg>
+                                            </span> <span><?php echo $review_count; ?> reviews</span></div>
+                                    <!-- <div>Average Rating: <?php echo $average_rating; ?></div> -->
+
+                                    <?php
+                                    // Get product price
+                                    $product = wc_get_product(get_the_ID());
+                                    $product_price = $product->get_price();
+                                    ?>
+
+                                    <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
+
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
+                                </li>
+                        <?php
+                            endwhile;
+                        } else {
+                            echo __('No products found');
+                        }
+                        wp_reset_postdata();
+                        ?>
+            </ul>
+
+                </div>
+            </section>
+        </div>
+        <div class="tab-pane fade" id="rings" role="tabpanel" aria-labelledby="rings-tab">
+        <section id="slider3" class="splide" aria-label="Splide Basic HTML Example">
+                <div class="splide__track">
+                        
+                <ul class="splide__list">
+                <?php
+                     $args = array(
+                        'post_type' => 'product',
+                        'posts_per_page' => 8,
+                        'post_status' => 'publish',
+                        'tax_query' => array(
+                            'relation' => 'AND',  // Fetch products that belong to both parent and sub categories
+                            array(
+                                'taxonomy' => 'product_cat',
+                                'field' => 'slug',
+                                'terms' => 'gold',  // Parent category slug
+                                'include_children' => false,
+                            ),
+                            array(
+                                'taxonomy' => 'product_cat',
+                                'field' => 'slug',
+                                'terms' => 'rings',  // Subcategory slug
+                            ),
+                        ),
+                    );
+                    $loop = new WP_Query($args);
+
+                    if ($loop->have_posts()) {
+                        while ($loop->have_posts()) : $loop->the_post();
+                            ?>
+
+                                <li class="splide__slide product-slider-item text-center px-4 mb-4">
+                                    <?php
+                                    // Get product image
+                                    $product_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'single-post-thumbnail');
+                                    ?>
+
+                                    <img width="357" height="462" src="<?php echo $product_image[0]; ?>"  alt="<?php the_title(); ?>" />
+
+                                    <div class="mt-3 mb-2 card-main-title"><?php the_title(); ?></div>
+                                    <?php
+                                    // Get product review count and rating
+                                    $review_count = get_comments_number();
+                                    // $average_rating = get_post_meta(get_the_ID(), '_wc_average_rating', true);
+                                    ?>
+
+                                    <div class="card-sub-title mb-3"> <span class="me-2"><svg width="97" height="17" viewBox="0 0 97 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.9313 0.886719L10.381 5.95721L15.8575 6.76869L11.8944 10.7124L12.8308 16.2843L7.9313 13.6534L3.03181 16.2843L3.96818 10.7124L0 6.76869L5.48155 5.95721L7.9313 0.886719Z" fill="#C79144"/>
+                                            <path d="M27.9586 0.886719L30.4084 5.95721L35.8849 6.76869L31.9218 10.7124L32.8581 16.2843L27.9586 13.6534L23.0592 16.2843L23.9955 10.7124L20.0273 6.76869L25.5089 5.95721L27.9586 0.886719Z" fill="#C79144"/>
+                                            <path d="M47.9887 0.886719L50.4385 5.95721L55.915 6.76869L51.9519 10.7124L52.8882 16.2843L47.9887 13.6534L43.0892 16.2843L44.0256 10.7124L40.0625 6.76869L45.539 5.95721L47.9887 0.886719Z" fill="#C79144"/>
+                                            <path d="M68.602 0.886719L71.0518 5.95721L76.5283 6.76869L72.5651 10.7124L73.5015 16.2843L68.602 13.6534L63.7025 16.2843L64.6389 10.7124L60.6758 6.76869L66.1523 5.95721L68.602 0.886719Z" fill="#C79144"/>
+                                            <path d="M88.6294 0.886719L91.0791 5.95721L96.5556 6.76869L92.5925 10.7124L93.5288 16.2843L88.6294 13.6534L83.7299 16.2843L84.6662 10.7124L80.7031 6.76869L86.1796 5.95721L88.6294 0.886719Z" fill="#C79144"/>
+                                            </svg>
+                                            </span> <span><?php echo $review_count; ?> reviews</span></div>
+                                    <!-- <div>Average Rating: <?php echo $average_rating; ?></div> -->
+
+                                    <?php
+                                    // Get product price
+                                    $product = wc_get_product(get_the_ID());
+                                    $product_price = $product->get_price();
+                                    ?>
+
+                                    <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
+
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
+                                </li>
+                        <?php
+                            endwhile;
+                        } else {
+                            echo __('No products found');
+                        }
+                        wp_reset_postdata();
+                        ?>
+            </ul>
+
+                </div>
+            </section>
+        </div>
+        <div class="tab-pane fade" id="earnings" role="tabpanel" aria-labelledby="earnings-tab">
+        <section id="slider4" class="splide" aria-label="Splide Basic HTML Example">
+                <div class="splide__track">
+                        
+                <ul class="splide__list">
+                <?php
+                     $args = array(
+                        'post_type' => 'product',
+                        'posts_per_page' => 8,
+                        'post_status' => 'publish',
+                        'tax_query' => array(
+                            'relation' => 'AND',  // Fetch products that belong to both parent and sub categories
+                            array(
+                                'taxonomy' => 'product_cat',
+                                'field' => 'slug',
+                                'terms' => 'gold',  // Parent category slug
+                                'include_children' => false,
+                            ),
+                            array(
+                                'taxonomy' => 'product_cat',
+                                'field' => 'slug',
+                                'terms' => 'earrings',  // Subcategory slug
+                            ),
+                        ),
+                    );
+                    $loop = new WP_Query($args);
+
+                    if ($loop->have_posts()) {
+                        while ($loop->have_posts()) : $loop->the_post();
+                            ?>
+
+                                <li class="splide__slide product-slider-item text-center px-4 mb-4">
+                                    <?php
+                                    // Get product image
+                                    $product_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'single-post-thumbnail');
+                                    ?>
+
+                                    <img width="357" height="462" src="<?php echo $product_image[0]; ?>"  alt="<?php the_title(); ?>" />
+
+                                    <div class="mt-3 mb-2 card-main-title"><?php the_title(); ?></div>
+                                    <?php
+                                    // Get product review count and rating
+                                    $review_count = get_comments_number();
+                                    // $average_rating = get_post_meta(get_the_ID(), '_wc_average_rating', true);
+                                    ?>
+
+                                    <div class="card-sub-title mb-3"> <span class="me-2"><svg width="97" height="17" viewBox="0 0 97 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.9313 0.886719L10.381 5.95721L15.8575 6.76869L11.8944 10.7124L12.8308 16.2843L7.9313 13.6534L3.03181 16.2843L3.96818 10.7124L0 6.76869L5.48155 5.95721L7.9313 0.886719Z" fill="#C79144"/>
+                                            <path d="M27.9586 0.886719L30.4084 5.95721L35.8849 6.76869L31.9218 10.7124L32.8581 16.2843L27.9586 13.6534L23.0592 16.2843L23.9955 10.7124L20.0273 6.76869L25.5089 5.95721L27.9586 0.886719Z" fill="#C79144"/>
+                                            <path d="M47.9887 0.886719L50.4385 5.95721L55.915 6.76869L51.9519 10.7124L52.8882 16.2843L47.9887 13.6534L43.0892 16.2843L44.0256 10.7124L40.0625 6.76869L45.539 5.95721L47.9887 0.886719Z" fill="#C79144"/>
+                                            <path d="M68.602 0.886719L71.0518 5.95721L76.5283 6.76869L72.5651 10.7124L73.5015 16.2843L68.602 13.6534L63.7025 16.2843L64.6389 10.7124L60.6758 6.76869L66.1523 5.95721L68.602 0.886719Z" fill="#C79144"/>
+                                            <path d="M88.6294 0.886719L91.0791 5.95721L96.5556 6.76869L92.5925 10.7124L93.5288 16.2843L88.6294 13.6534L83.7299 16.2843L84.6662 10.7124L80.7031 6.76869L86.1796 5.95721L88.6294 0.886719Z" fill="#C79144"/>
+                                            </svg>
+                                            </span> <span><?php echo $review_count; ?> reviews</span></div>
+                                    <!-- <div>Average Rating: <?php echo $average_rating; ?></div> -->
+
+                                    <?php
+                                    // Get product price
+                                    $product = wc_get_product(get_the_ID());
+                                    $product_price = $product->get_price();
+                                    ?>
+
+                                    <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
+
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
+                                </li>
+                        <?php
+                            endwhile;
+                        } else {
+                            echo __('No products found');
+                        }
+                        wp_reset_postdata();
+                        ?>
+            </ul>
+
+                </div>
+            </section>
+        </div>
+        <div class="tab-pane fade" id="necklace" role="tabpanel" aria-labelledby="necklace-tab">
+        <section id="slider5" class="splide" aria-label="Splide Basic HTML Example">
+                <div class="splide__track">
+                <ul class="splide__list">
+                <?php
                     $args = array(
                         'post_type' => 'product',
                         'posts_per_page' => 8,
                         'post_status' => 'publish',
-                        // 'product_cat' => 'gold-jewellery' // Replace 'gold-jewellery' with your category slug
+                        'tax_query' => array(
+                            'relation' => 'AND',  // Fetch products that belong to both parent and sub categories
+                            array(
+                                'taxonomy' => 'product_cat',
+                                'field' => 'slug',
+                                'terms' => 'gold',  // Parent category slug
+                                'include_children' => false,
+                            ),
+                            array(
+                                'taxonomy' => 'product_cat',
+                                'field' => 'slug',
+                                'terms' => 'necklace',  // Subcategory slug
+                            ),
+                        ),
                     );
                     $loop = new WP_Query($args);
-                    
+
                     if ($loop->have_posts()) {
                         while ($loop->have_posts()) : $loop->the_post();
-                    ?>
+                            ?>
 
-                            <div class="col-10 col-md-6 col-lg-4 text-center px-4 mb-4">
-                                <?php
-                                // Get product image
-                                $product_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'single-post-thumbnail');
-                                ?>
+                                <li class="splide__slide product-slider-item text-center px-4 mb-4">
+                                    <?php
+                                    // Get product image
+                                    $product_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'single-post-thumbnail');
+                                    ?>
 
-                                <img width="357" height="462" src="<?php echo $product_image[0]; ?>"  alt="<?php the_title(); ?>" />
+                                    <img width="357" height="462" src="<?php echo $product_image[0]; ?>"  alt="<?php the_title(); ?>" />
 
-                                <div class="mt-3 mb-2 card-main-title"><?php the_title(); ?></div>
-                                <?php
-                                // Get product review count and rating
-                                $review_count = get_comments_number();
-                                // $average_rating = get_post_meta(get_the_ID(), '_wc_average_rating', true);
-                                ?>
+                                    <div class="mt-3 mb-2 card-main-title"><?php the_title(); ?></div>
+                                    <?php
+                                    // Get product review count and rating
+                                    $review_count = get_comments_number();
+                                    // $average_rating = get_post_meta(get_the_ID(), '_wc_average_rating', true);
+                                    ?>
 
-                                <div class="card-sub-title mb-3"> <span class="me-2"><svg width="97" height="17" viewBox="0 0 97 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7.9313 0.886719L10.381 5.95721L15.8575 6.76869L11.8944 10.7124L12.8308 16.2843L7.9313 13.6534L3.03181 16.2843L3.96818 10.7124L0 6.76869L5.48155 5.95721L7.9313 0.886719Z" fill="#C79144"/>
-                                        <path d="M27.9586 0.886719L30.4084 5.95721L35.8849 6.76869L31.9218 10.7124L32.8581 16.2843L27.9586 13.6534L23.0592 16.2843L23.9955 10.7124L20.0273 6.76869L25.5089 5.95721L27.9586 0.886719Z" fill="#C79144"/>
-                                        <path d="M47.9887 0.886719L50.4385 5.95721L55.915 6.76869L51.9519 10.7124L52.8882 16.2843L47.9887 13.6534L43.0892 16.2843L44.0256 10.7124L40.0625 6.76869L45.539 5.95721L47.9887 0.886719Z" fill="#C79144"/>
-                                        <path d="M68.602 0.886719L71.0518 5.95721L76.5283 6.76869L72.5651 10.7124L73.5015 16.2843L68.602 13.6534L63.7025 16.2843L64.6389 10.7124L60.6758 6.76869L66.1523 5.95721L68.602 0.886719Z" fill="#C79144"/>
-                                        <path d="M88.6294 0.886719L91.0791 5.95721L96.5556 6.76869L92.5925 10.7124L93.5288 16.2843L88.6294 13.6534L83.7299 16.2843L84.6662 10.7124L80.7031 6.76869L86.1796 5.95721L88.6294 0.886719Z" fill="#C79144"/>
-                                        </svg>
-                                        </span> <span><?php echo $review_count; ?> reviews</span></div>
-                                <!-- <div>Average Rating: <?php echo $average_rating; ?></div> -->
+                                    <div class="card-sub-title mb-3"> <span class="me-2"><svg width="97" height="17" viewBox="0 0 97 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.9313 0.886719L10.381 5.95721L15.8575 6.76869L11.8944 10.7124L12.8308 16.2843L7.9313 13.6534L3.03181 16.2843L3.96818 10.7124L0 6.76869L5.48155 5.95721L7.9313 0.886719Z" fill="#C79144"/>
+                                            <path d="M27.9586 0.886719L30.4084 5.95721L35.8849 6.76869L31.9218 10.7124L32.8581 16.2843L27.9586 13.6534L23.0592 16.2843L23.9955 10.7124L20.0273 6.76869L25.5089 5.95721L27.9586 0.886719Z" fill="#C79144"/>
+                                            <path d="M47.9887 0.886719L50.4385 5.95721L55.915 6.76869L51.9519 10.7124L52.8882 16.2843L47.9887 13.6534L43.0892 16.2843L44.0256 10.7124L40.0625 6.76869L45.539 5.95721L47.9887 0.886719Z" fill="#C79144"/>
+                                            <path d="M68.602 0.886719L71.0518 5.95721L76.5283 6.76869L72.5651 10.7124L73.5015 16.2843L68.602 13.6534L63.7025 16.2843L64.6389 10.7124L60.6758 6.76869L66.1523 5.95721L68.602 0.886719Z" fill="#C79144"/>
+                                            <path d="M88.6294 0.886719L91.0791 5.95721L96.5556 6.76869L92.5925 10.7124L93.5288 16.2843L88.6294 13.6534L83.7299 16.2843L84.6662 10.7124L80.7031 6.76869L86.1796 5.95721L88.6294 0.886719Z" fill="#C79144"/>
+                                            </svg>
+                                            </span> <span><?php echo $review_count; ?> reviews</span></div>
+                                    <!-- <div>Average Rating: <?php echo $average_rating; ?></div> -->
 
-                                <?php
-                                // Get product price
-                                $product = wc_get_product(get_the_ID());
-                                $product_price = $product->get_price();
-                                ?>
+                                    <?php
+                                    // Get product price
+                                    $product = wc_get_product(get_the_ID());
+                                    $product_price = $product->get_price();
+                                    ?>
 
-                                <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
+                                    <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
-                            </div>
-                    <?php
-                        endwhile;
-                    } else {
-                        echo __('No products found');
-                    }
-                    wp_reset_postdata();
-                    ?>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
+                                </li>
+                        <?php
+                            endwhile;
+                        } else {
+                            echo __('No products found');
+                        }
+                        wp_reset_postdata();
+                        ?>
+            </ul>
                 </div>
+            </section>
         </div>
-        <div class="tab-pane fade" id="new-in" role="tabpanel" aria-labelledby="new-in-tab">NEW IN</div>
-        <div class="tab-pane fade" id="rings" role="tabpanel" aria-labelledby="rings-tab">RINGS</div>
-        <div class="tab-pane fade" id="earnings" role="tabpanel" aria-labelledby="earnings-tab">EARRINGS</div>
-        <div class="tab-pane fade" id="necklace" role="tabpanel" aria-labelledby="necklace-tab">NECKLACE</div>
-        <div class="tab-pane fade" id="braclets" role="tabpanel" aria-labelledby="braclets-tab">BRACELETS</div>
+        <div class="tab-pane fade" id="braclets" role="tabpanel" aria-labelledby="braclets-tab">
+            <section id="slider6" class="splide" aria-label="Splide Basic HTML Example">
+                <div class="splide__track">
+                        
+                <ul class="splide__list">
+                <?php
+                     $args = array(
+                        'post_type' => 'product',
+                        'posts_per_page' => 8,
+                        'post_status' => 'publish',
+                        'tax_query' => array(
+                            'relation' => 'AND',  // Fetch products that belong to both parent and sub categories
+                            array(
+                                'taxonomy' => 'product_cat',
+                                'field' => 'slug',
+                                'terms' => 'gold',  // Parent category slug
+                                'include_children' => false,
+                            ),
+                            array(
+                                'taxonomy' => 'product_cat',
+                                'field' => 'slug',
+                                'terms' => 'bracelets',  // Subcategory slug
+                            ),
+                        ),
+                    );
+                    $loop = new WP_Query($args);
+
+                    if ($loop->have_posts()) {
+                        while ($loop->have_posts()) : $loop->the_post();
+                            ?>
+
+                                <li class="splide__slide product-slider-item text-center px-4 mb-4">
+                                    <?php
+                                    // Get product image
+                                    $product_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'single-post-thumbnail');
+                                    ?>
+
+                                    <img width="357" height="462" src="<?php echo $product_image[0]; ?>"  alt="<?php the_title(); ?>" />
+
+                                    <div class="mt-3 mb-2 card-main-title"><?php the_title(); ?></div>
+                                    <?php
+                                    // Get product review count and rating
+                                    $review_count = get_comments_number();
+                                    // $average_rating = get_post_meta(get_the_ID(), '_wc_average_rating', true);
+                                    ?>
+
+                                    <div class="card-sub-title mb-3"> <span class="me-2"><svg width="97" height="17" viewBox="0 0 97 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.9313 0.886719L10.381 5.95721L15.8575 6.76869L11.8944 10.7124L12.8308 16.2843L7.9313 13.6534L3.03181 16.2843L3.96818 10.7124L0 6.76869L5.48155 5.95721L7.9313 0.886719Z" fill="#C79144"/>
+                                            <path d="M27.9586 0.886719L30.4084 5.95721L35.8849 6.76869L31.9218 10.7124L32.8581 16.2843L27.9586 13.6534L23.0592 16.2843L23.9955 10.7124L20.0273 6.76869L25.5089 5.95721L27.9586 0.886719Z" fill="#C79144"/>
+                                            <path d="M47.9887 0.886719L50.4385 5.95721L55.915 6.76869L51.9519 10.7124L52.8882 16.2843L47.9887 13.6534L43.0892 16.2843L44.0256 10.7124L40.0625 6.76869L45.539 5.95721L47.9887 0.886719Z" fill="#C79144"/>
+                                            <path d="M68.602 0.886719L71.0518 5.95721L76.5283 6.76869L72.5651 10.7124L73.5015 16.2843L68.602 13.6534L63.7025 16.2843L64.6389 10.7124L60.6758 6.76869L66.1523 5.95721L68.602 0.886719Z" fill="#C79144"/>
+                                            <path d="M88.6294 0.886719L91.0791 5.95721L96.5556 6.76869L92.5925 10.7124L93.5288 16.2843L88.6294 13.6534L83.7299 16.2843L84.6662 10.7124L80.7031 6.76869L86.1796 5.95721L88.6294 0.886719Z" fill="#C79144"/>
+                                            </svg>
+                                            </span> <span><?php echo $review_count; ?> reviews</span></div>
+                                    <!-- <div>Average Rating: <?php echo $average_rating; ?></div> -->
+
+                                    <?php
+                                    // Get product price
+                                    $product = wc_get_product(get_the_ID());
+                                    $product_price = $product->get_price();
+                                    ?>
+
+                                    <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
+
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
+                                </li>
+                        <?php
+                            endwhile;
+                        } else {
+                            echo __('No products found');
+                        }
+                        wp_reset_postdata();
+                        ?>
+            </ul>
+
+                </div>
+            </section>
+        </div>
 
     </div>
 
@@ -322,17 +721,32 @@ get_header();
 
 
 <div class="container overflow-hidden mb-5">
+<?php if (have_rows('image_text_grid')) : ?>
+                <?php while (have_rows('image_text_grid')) : the_row();
+                    $image_text_grid_image_1 = get_sub_field('image_text_grid_image_1');
+                    $image_text_grid_title_1 = get_sub_field('image_text_grid_title_1');
+                    $image_text_grid_caption_1 = get_sub_field('image_text_grid_caption_1');
+                    $image_text_grid_text_1 = get_sub_field('image_text_grid_text_1');
+                    $image_text_grid_url_1 = get_sub_field('image_text_grid_url_1');
+                    $image_text_grid_url_text_1 = get_sub_field('image_text_grid_url_text_1');
+                    $image_text_grid_image_2 = get_sub_field('image_text_grid_image_2');
+                    $image_text_grid_title_2 = get_sub_field('image_text_grid_title_2');
+                    $image_text_grid_caption_2 = get_sub_field('image_text_grid_caption_2');
+                    $image_text_grid_text_2 = get_sub_field('image_text_grid_text_2');
+                    $image_text_grid_url_2 = get_sub_field('image_text_grid_url_2');
+                    $image_text_grid_url_text_2 = get_sub_field('image_text_grid_url_text_2');
+                ?>
         <div class="row g-0">
-            <div class="col-lg-6 order-1 order-lg-0" style="min-height: 45vh; background-size: cover;background-position: center; background-image: url('/wp-content/uploads/2023/08/home-bannner1.webp');">
+
+            <div class="col-lg-6 order-1 order-lg-0" style="min-height: 45vh; background-size: cover;background-position: center; background-image: url('<?php echo $image_text_grid_image_1 ?>');">
             </div>
             <div class="col-lg-6 my-auto px-5 py-5 order-0 order-lg-1">
                 <div class="lc-block">
                     <div class="text-center text-lg-start">
-                    <div class="main-heading mb-3 body-text-dark">Buy Now Pay Later</div>
-                    <div class="caption-text mb-4 body-text-light">PayLater by Grab | Atome</div>
-                    <p class="main-text mb-4 body-text-light">Get what you want now, pay later. 3 split payments with 0% interest,
-                no credit card required.</p>
-                    <a class="links-custom-btn" href="#">LEARN NOW <span class="ms-1">
+                    <div class="main-heading mb-3 body-text-dark"><?php echo $image_text_grid_title_1 ?></div>
+                    <div class="caption-text mb-4 body-text-light"><?php echo $image_text_grid_caption_1 ?></div>
+                    <p class="main-text mb-4 body-text-light"><?php echo $image_text_grid_text_1 ?></p>
+                    <a class="links-custom-btn" href="<?php echo $image_text_grid_url_1 ?>"><?php echo $image_text_grid_url_text_1 ?> <span class="ms-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 20 10" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M19.8227 4.51949L16.0235 0.194639C15.9684 0.133112 15.9026 0.0844526 15.8301 0.0510941C15.7575 0.0177356 15.6796 0.000488281 15.6009 0.000488281C15.5223 0.000488281 15.4444 0.0177356 15.3718 0.0510941C15.2993 0.0844526 15.2335 0.133112 15.1783 0.194639C15.0687 0.324946 15.0078 0.495696 15.0078 0.672962C15.0078 0.850227 15.0687 1.02098 15.1783 1.15128L17.9686 4.32047H0.618087C0.454173 4.32047 0.29697 4.39192 0.181066 4.519C0.0651612 4.64609 0 4.81857 0 4.9983C0 5.17802 0.0651612 5.35002 0.181066 5.47711C0.29697 5.60419 0.454173 5.67564 0.618087 5.67564H17.9686L15.1783 8.84483C15.0687 8.97513 15.0078 9.14588 15.0078 9.32315C15.0078 9.50041 15.0687 9.67116 15.1783 9.80147C15.2328 9.86437 15.2983 9.91419 15.371 9.94842C15.4436 9.98265 15.5219 10.0005 15.6009 10.0005C15.68 10.0005 15.7583 9.98265 15.8309 9.94842C15.9036 9.91419 15.9691 9.86437 16.0235 9.80147L19.8227 5.47662C19.9364 5.3486 20 5.17699 20 4.9983C20 4.81961 19.9364 4.64751 19.8227 4.51949Z" fill="#C0832B"/>
                     </svg>
@@ -341,24 +755,31 @@ get_header();
                 </div>
 
             </div>
+
+        
         </div>
         <div class="row g-0">
-            <div class="d-none d-lg-block col-lg-6 order-lg-2 " style="min-height: 45vh; background-size: cover; background-position: center; background-image: url('/wp-content/uploads/2023/08/home-bannner2.webp');">
+            <div class="d-none d-lg-block col-lg-6 order-lg-2 " style="min-height: 45vh; background-size: cover; background-position: center; background-image: url('<?php echo $image_text_grid_image_2 ?>');">
 
             </div>
             <div class="col-lg-6 order-lg-1 my-auto px-5 py-5">
-                <div class="lc-block">
+            <div class="lc-block">
                     <div class="text-center text-lg-start">
-                    <div class="main-heading mb-3 body-text-dark">Perfect Gift Ideas</div>
-                    <p class="main-text mb-4 body-text-light">Comes with JewelOne jewellery box, silver polishing cloth and paper bag</p>
-                    <a class="links-custom-btn" href="#">SHOP GIFTS <span class="ms-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 20 10" fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.8227 4.51949L16.0235 0.194639C15.9684 0.133112 15.9026 0.0844526 15.8301 0.0510941C15.7575 0.0177356 15.6796 0.000488281 15.6009 0.000488281C15.5223 0.000488281 15.4444 0.0177356 15.3718 0.0510941C15.2993 0.0844526 15.2335 0.133112 15.1783 0.194639C15.0687 0.324946 15.0078 0.495696 15.0078 0.672962C15.0078 0.850227 15.0687 1.02098 15.1783 1.15128L17.9686 4.32047H0.618087C0.454173 4.32047 0.29697 4.39192 0.181066 4.519C0.0651612 4.64609 0 4.81857 0 4.9983C0 5.17802 0.0651612 5.35002 0.181066 5.47711C0.29697 5.60419 0.454173 5.67564 0.618087 5.67564H17.9686L15.1783 8.84483C15.0687 8.97513 15.0078 9.14588 15.0078 9.32315C15.0078 9.50041 15.0687 9.67116 15.1783 9.80147C15.2328 9.86437 15.2983 9.91419 15.371 9.94842C15.4436 9.98265 15.5219 10.0005 15.6009 10.0005C15.68 10.0005 15.7583 9.98265 15.8309 9.94842C15.9036 9.91419 15.9691 9.86437 16.0235 9.80147L19.8227 5.47662C19.9364 5.3486 20 5.17699 20 4.9983C20 4.81961 19.9364 4.64751 19.8227 4.51949Z" fill="#C0832B"/>
-                                    </svg>
+                    <div class="main-heading mb-3 body-text-dark"><?php echo $image_text_grid_title_2 ?></div>
+                    <div class="caption-text mb-4 body-text-light"><?php echo $image_text_grid_caption_2 ?></div>
+                    <p class="main-text mb-4 body-text-light"><?php echo $image_text_grid_text_2 ?></p>
+                    <a class="links-custom-btn" href="<?php echo $image_text_grid_url_2 ?>"><?php echo $image_text_grid_url_text_2 ?> <span class="ms-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 20 10" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.8227 4.51949L16.0235 0.194639C15.9684 0.133112 15.9026 0.0844526 15.8301 0.0510941C15.7575 0.0177356 15.6796 0.000488281 15.6009 0.000488281C15.5223 0.000488281 15.4444 0.0177356 15.3718 0.0510941C15.2993 0.0844526 15.2335 0.133112 15.1783 0.194639C15.0687 0.324946 15.0078 0.495696 15.0078 0.672962C15.0078 0.850227 15.0687 1.02098 15.1783 1.15128L17.9686 4.32047H0.618087C0.454173 4.32047 0.29697 4.39192 0.181066 4.519C0.0651612 4.64609 0 4.81857 0 4.9983C0 5.17802 0.0651612 5.35002 0.181066 5.47711C0.29697 5.60419 0.454173 5.67564 0.618087 5.67564H17.9686L15.1783 8.84483C15.0687 8.97513 15.0078 9.14588 15.0078 9.32315C15.0078 9.50041 15.0687 9.67116 15.1783 9.80147C15.2328 9.86437 15.2983 9.91419 15.371 9.94842C15.4436 9.98265 15.5219 10.0005 15.6009 10.0005C15.68 10.0005 15.7583 9.98265 15.8309 9.94842C15.9036 9.91419 15.9691 9.86437 16.0235 9.80147L19.8227 5.47662C19.9364 5.3486 20 5.17699 20 4.9983C20 4.81961 19.9364 4.64751 19.8227 4.51949Z" fill="#C0832B"/>
+                    </svg>
                                     </span></a>
                     </div>
                 </div>
             </div>
         </div>
+
+        <?php endwhile; ?>
+            <?php endif; ?>
 </div>
 
 
@@ -440,11 +861,33 @@ get_header();
 </div>
 
 
-
 <script>
-  document.addEventListener( 'DOMContentLoaded', function() {
-    var splide = new Splide( '.splide' );
-    splide.mount();
-  } );
+ var elms = document.getElementsByClassName( 'splide' );
+
+for ( var i = 0; i < elms.length; i++ )
+{
+  new Splide(elms[i], {
+    type: 'slide',              // Loop the slides
+    perPage: 3,                // Show 3 slides per view
+    perMove: 1,                // Move 1 slide at a time
+    gap: '1rem',               // Gap between slides
+    autoplay: false,            // Autoplay the slider
+    interval: 3000,            // Autoplay interval in milliseconds
+    pauseOnHover: true,        // Pause autoplay on hover
+    breakpoints: {
+        1200: {
+        perPage: 2,             // Show 3 slides per view on screens with width >= 992px
+      },
+      992: {
+        perPage: 2,             // Show 2 slides per view on screens with width >= 992px
+      },
+      768: {
+        perPage: 1,             // Show 1 slide per view on screens with width >= 768px
+      }
+    }
+  }).mount();
+}
+
 </script>
+
 <?php get_footer();

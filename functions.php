@@ -69,3 +69,8 @@ add_filter( 'wp_is_application_passwords_available', '__return_false' );
 
 // ADD YOUR CUSTOM PHP CODE DOWN BELOW /////////////////////////
 
+if( function_exists('acf_add_options_page') ) {
+    
+    acf_add_options_page();
+    
+}
