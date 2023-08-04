@@ -293,7 +293,7 @@ get_header();
 
                                     <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Add to Cart</a>
                                 </li>
                         <?php
                             endwhile;
@@ -366,7 +366,7 @@ get_header();
 
                                     <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Add to Cart</a>
                                 </li>
                         <?php
                             endwhile;
@@ -444,7 +444,7 @@ get_header();
 
                                     <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Add to Cart</a>
                                 </li>
                         <?php
                             endwhile;
@@ -522,7 +522,7 @@ get_header();
 
                                     <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Add to Cart</a>
                                 </li>
                         <?php
                             endwhile;
@@ -599,7 +599,7 @@ get_header();
 
                                     <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Add to Cart</a>
                                 </li>
                         <?php
                             endwhile;
@@ -676,7 +676,7 @@ get_header();
 
                                     <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Book an appoinment</a>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Add to Cart</a>
                                 </li>
                         <?php
                             endwhile;

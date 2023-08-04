@@ -44,6 +44,7 @@ do_action( 'woocommerce_before_main_content' );
 	do_action( 'woocommerce_archive_description' );
 	?>
 </header>
+
 <?php
 if ( woocommerce_product_loop() ) {
 
@@ -87,7 +88,6 @@ if ( woocommerce_product_loop() ) {
 	 */
 	do_action( 'woocommerce_no_products_found' );
 }
-
 /**
  * Hook: woocommerce_after_main_content.
  *
