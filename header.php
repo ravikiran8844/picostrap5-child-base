@@ -29,7 +29,7 @@ defined( 'ABSPATH' ) || exit;
     
  
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="custom-main-menu navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <?php 
                     the_custom_logo();
@@ -53,11 +53,6 @@ defined( 'ABSPATH' ) || exit;
       </div>
     </div>
   </nav>
-
-
-
-
-
 
     
 

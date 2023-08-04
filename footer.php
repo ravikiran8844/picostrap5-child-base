@@ -27,23 +27,37 @@
 					</div>
 					<div class="col-6 col-md-4 col-lg-2">
 						<div class="custom_footer--links-title mb-3">Useful Links</div>
-						<ul class="list-unstyled">
-							<li><a href="#" class="custom_footer--link-item ">Delivery Information</a></li>
-							<li><a href="#" class="custom_footer--link-item ">International Shipping</a></li>
-							<li><a href="#" class="custom_footer--link-item ">Payment Options</a></li>
-							<li><a href="#" class="custom_footer--link-item ">Track your Order</a></li>
-							<li><a href="#" class="custom_footer--link-item ">Returns</a></li>
-							<li><a href="#" class="custom_footer--link-item ">Find a Store</a></li>
-						</ul>
+						<div>
+						<?php 
+						// Replace 'custom-menu' with the name or location of your custom menu
+						$menu_items = wp_get_nav_menu_items('useful-links');
+
+						if ($menu_items) {
+							foreach ($menu_items as $menu_item) {
+								// Output or manipulate each menu item as needed
+								$class = 'custom_footer--link-item '; // Add your custom class name here
+								echo '<a href="' . esc_url($menu_item->url) . '" class="' . esc_attr($class) . '">' . esc_html($menu_item->title) . '</a><br>';
+							}
+						}
+						?>
+						</div>
 					</div>
 					<div class="col-6 col-md-4 col-lg-2">
 						<div class="custom_footer--links-title mb-3">Information</div>
-						<ul class="list-unstyled">
-							<li><a href="#" class="custom_footer--link-item ">Blog</a></li>
-							<li><a href="#" class="custom_footer--link-item ">Offers & Contest Details</a></li>
-							<li><a href="#" class="custom_footer--link-item ">Help & FAQs</a></li>
-							<li><a href="#" class="custom_footer--link-item ">About JewelOne</a></li>
-						</ul>
+						<div>
+						<?php 
+						// Replace 'custom-menu' with the name or location of your custom menu
+						$menu_items = wp_get_nav_menu_items('information');
+
+						if ($menu_items) {
+							foreach ($menu_items as $menu_item) {
+								// Output or manipulate each menu item as needed
+								$class = 'custom_footer--link-item '; // Add your custom class name here
+								echo '<a href="' . esc_url($menu_item->url) . '" class="' . esc_attr($class) . '">' . esc_html($menu_item->title) . '</a><br>';
+							}
+						}
+						?>
+						</div>
 					</div>
 					<div class="col-12 col-sm-6 col-md-4 col-lg-4">
 						<div class="custom_footer--links-title mb-3">Contact Us</div>
