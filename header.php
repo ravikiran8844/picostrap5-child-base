@@ -19,7 +19,6 @@ defined( 'ABSPATH' ) || exit;
     <?php wp_body_open(); ?>  
 
 
-
     <div class="bg-dark py-2">
           <div class="container text-center">
             <div class="main-text text-white"><?php the_field('announcment-text', 'option'); ?></div>
@@ -29,30 +28,53 @@ defined( 'ABSPATH' ) || exit;
     
  
 
-    <nav class="custom-main-menu navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <?php 
+
+    <div class="main-header">
+        <div class="container">
+        <div class="header-1 col-12 d-flex justify-content-between align-items-center">
+            <div class="me-3">
+            <?php 
                     the_custom_logo();
-       ?>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-      <?php 
+            ?>
+            </div>
+            <div class="d-none d-lg-block flex-grow-1 px-5">
+            <div class="d-flex justify-content-between">
+                <!-- <input class="form-control nav-search-bar" type="serach"> -->
+                <?php echo do_shortcode('[fibosearch]'); ?>
+              </div>
+              </div>
+              <div>
+                <!-- <ul  class="d-flex justify-content-between align-items-center  list-unstyled" >
+                  <li class="list-unstyled me-2">link</li>
+                  <li class="list-unstyled me-2">link</li>
+                  <li class="list-unstyled me-2">link</li>
+                </ul> -->
+                <?php 
                   wp_nav_menu(array(
                     'theme_location' => 'primary',
                     'container' => false,
                     'menu_class' => '',
                     'fallback_cb' => '__return_false',
-                    'items_wrap' => '<ul id="%1$s" class="navbar-nav me-auto mb-2 mb-md-0 %2$s">%3$s</ul>',
+                    'items_wrap' => '<ul id="%1$s" class="d-flex justify-content-between align-items-center gap-3 m-auto list-unstyled %2$s">%3$s</ul>',
                     'walker' => new bootstrap_5_wp_nav_menu_walker()
                 ));
                 ?>
-  
-      </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="">
+        <div class="header-2_mega-menu">
+        <div class="container col-12">
+        <?php wp_nav_menu( array( 'theme_location' => 'max_mega_menu_1' ) ); ?>
+        </div>
+        </div>
+        </div>
+        
+       
     </div>
-  </nav>
+
+
 
     
 

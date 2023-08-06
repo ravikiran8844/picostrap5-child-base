@@ -101,13 +101,15 @@ get_header();
 
 
 
-<div class="shop-by-category container mt-5">
+<div id="slider11" class="shop-by-category container mt-5 splide">
     <div class="row">
         <div class="col-12 mb-4">
             <div class="main-heading text-color-red">Shop by Category</div>
         </div>
     </div>
-    <div class="row"  data-flickity='{ "cellAlign": "left", "contain": true, "pageDots": false, "prevNextButtons": true, "freeScroll": true, "groupCells": true}'>
+    <div class="row splide__track">
+        <ul class="splide__list">
+
         <?php
 
         // Get the parent category term object (e.g., "gold")
@@ -132,7 +134,7 @@ get_header();
                 $image = wp_get_attachment_image_src($thumbnail_id, 'thumbnail');
 
                 // Display category with container
-                echo '<div class="col p-3"><div class="text-center category-container mb-4">';
+                echo '<li class="splide__slide p-3"><div class="text-center category-container mb-4">';
                 
                 if ($image) {
                     echo '<div class="shop-by-category_img-wrapper"><img class="img-fluid mb-4" src="' . esc_url($image[0]) . '"  width="180" height="180" alt="' . esc_attr($category_name) . '" /></div>';
@@ -145,10 +147,12 @@ get_header();
                 </svg>
                 </span> </a></div>';
                 
-                echo '</div></div></div>'; // Close category container
+                echo '</div></div></li>'; // Close category container
             }
         }
         ?>
+        </ul>
+
     </div>
 </div>
 
@@ -293,7 +297,7 @@ get_header();
 
                                     <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Add to Cart</a>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Shop Now</a>
                                 </li>
                         <?php
                             endwhile;
@@ -366,7 +370,7 @@ get_header();
 
                                     <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Add to Cart</a>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Shop Now</a>
                                 </li>
                         <?php
                             endwhile;
@@ -444,7 +448,7 @@ get_header();
 
                                     <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Add to Cart</a>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Shop Now</a>
                                 </li>
                         <?php
                             endwhile;
@@ -522,7 +526,7 @@ get_header();
 
                                     <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Add to Cart</a>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Shop Now</a>
                                 </li>
                         <?php
                             endwhile;
@@ -599,7 +603,7 @@ get_header();
 
                                     <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Add to Cart</a>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Shop Now</a>
                                 </li>
                         <?php
                             endwhile;
@@ -676,7 +680,7 @@ get_header();
 
                                     <p class="product-card-price"><?php echo wc_price($product_price); ?></p>
 
-                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Add to Cart</a>
+                                    <a class="btn btn-outline-light product-card-buy-btn" href="<?php the_permalink(); ?>" class="button">Shop Now</a>
                                 </li>
                         <?php
                             endwhile;
@@ -705,7 +709,7 @@ get_header();
 
 
 
-<div class="container-fluid mb-5">
+<div class="container-fluid pt-3 mb-5">
     <div class="row">
                     <?php
                     $textBlock = get_field('video_section'); 
@@ -827,38 +831,57 @@ get_header();
             </div>
 
         </div>
-        <div class="row">
+        <div class="col-12 col-xl-10 m-auto">
+            <div class="row">
 
-        <?php
-        $the_query = new WP_Query(array(
-            //'category_name' => 'Jewelone',
-			'post_type' => 'post',
-            'post_status' => 'publish',
-			'orderby' => 'post_date',
-            'posts_per_page' => 4,		   
-        )); 
-        ?>
-        <?php if ($the_query->have_posts()) : ?> 
-            <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>  
+            <?php
+            $the_query = new WP_Query(array(
+                //'category_name' => 'Jewelone',
+                'post_type' => 'post',
+                'post_status' => 'publish',
+                'orderby' => 'post_date',
+                'posts_per_page' => 4,		   
+            )); 
+            ?>
+            <?php if ($the_query->have_posts()) : ?> 
+                <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>  
 
-            <div class="col-12 col-lg-6 mb-4">
-                <div class="position-relative">
-                    <img class="img-fluid" width="585" height="339" src="<?php the_post_thumbnail_url();?>" alt="">
-                    <div class="position-absolute bottom-0 p-4 text-white">
-                        <div class="date mb-3"><?php echo get_the_date(); ?></div>
-                        <div class="blog-title mb-3 w-75"><?php the_title(); ?> </div>
-                        <a class="blog-link" href="<?php the_permalink(); ?>">SHOP GIFTS <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.3033 4.5393L14.8372 0.856724C14.7869 0.804334 14.7269 0.762901 14.6607 0.734497C14.5945 0.706092 14.5235 0.691406 14.4517 0.691406C14.3799 0.691406 14.3089 0.706092 14.2427 0.734497C14.1765 0.762901 14.1165 0.804334 14.0662 0.856724C13.9662 0.967679 13.9106 1.11307 13.9106 1.26401C13.9106 1.41495 13.9662 1.56035 14.0662 1.6713L16.6117 4.36984H0.782639C0.633098 4.36984 0.48968 4.43068 0.383939 4.53889C0.278197 4.6471 0.21875 4.79397 0.21875 4.947C0.21875 5.10004 0.278197 5.2465 0.383939 5.35471C0.48968 5.46292 0.633098 5.52375 0.782639 5.52375H16.6117L14.0662 8.22229C13.9662 8.33325 13.9106 8.47864 13.9106 8.62958C13.9106 8.78052 13.9662 8.92591 14.0662 9.03687C14.1158 9.09043 14.1756 9.13285 14.2419 9.162C14.3082 9.19115 14.3796 9.20633 14.4517 9.20633C14.5238 9.20633 14.5952 9.19115 14.6615 9.162C14.7278 9.13285 14.7876 9.09043 14.8372 9.03687L18.3033 5.35429C18.407 5.24529 18.465 5.09916 18.465 4.947C18.465 4.79485 18.407 4.64831 18.3033 4.5393Z" fill="white"/>
-                        </svg></span></a>
+                <div class="col-12 col-lg-6 mb-4 d-flex justify-content-center">
+                    <div class="position-relative">
+                        <img class="img-fluid" width="585" height="339" src="<?php the_post_thumbnail_url();?>" alt="">
+                        <div class="position-absolute bottom-0 p-4 text-white">
+                            <div class="date mb-3"><?php echo get_the_date(); ?></div>
+                            <div class="blog-title mb-3 w-75"><?php the_title(); ?> </div>
+                            <a class="blog-link" href="<?php the_permalink(); ?>">SHOP GIFTS <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.3033 4.5393L14.8372 0.856724C14.7869 0.804334 14.7269 0.762901 14.6607 0.734497C14.5945 0.706092 14.5235 0.691406 14.4517 0.691406C14.3799 0.691406 14.3089 0.706092 14.2427 0.734497C14.1765 0.762901 14.1165 0.804334 14.0662 0.856724C13.9662 0.967679 13.9106 1.11307 13.9106 1.26401C13.9106 1.41495 13.9662 1.56035 14.0662 1.6713L16.6117 4.36984H0.782639C0.633098 4.36984 0.48968 4.43068 0.383939 4.53889C0.278197 4.6471 0.21875 4.79397 0.21875 4.947C0.21875 5.10004 0.278197 5.2465 0.383939 5.35471C0.48968 5.46292 0.633098 5.52375 0.782639 5.52375H16.6117L14.0662 8.22229C13.9662 8.33325 13.9106 8.47864 13.9106 8.62958C13.9106 8.78052 13.9662 8.92591 14.0662 9.03687C14.1158 9.09043 14.1756 9.13285 14.2419 9.162C14.3082 9.19115 14.3796 9.20633 14.4517 9.20633C14.5238 9.20633 14.5952 9.19115 14.6615 9.162C14.7278 9.13285 14.7876 9.09043 14.8372 9.03687L18.3033 5.35429C18.407 5.24529 18.465 5.09916 18.465 4.947C18.465 4.79485 18.407 4.64831 18.3033 4.5393Z" fill="white"/>
+                            </svg></span></a>
+                        </div>
                     </div>
                 </div>
+                <?php endwhile; ?>  
+                <?php endif; ?>  
+
             </div>
-            <?php endwhile; ?>  
-            <?php endif; ?>  
 
         </div>
     </div>
 </div>
+
+
+
+
+
+<div class="instagram-section">
+    <div class="container">
+        <div class="col-12">
+            <div>
+
+            </div>
+        </div>
+    </div>           
+</div>
+
+
 
 
 <script>
@@ -869,12 +892,13 @@ for ( var i = 0; i < elms.length; i++ )
   new Splide(elms[i], {
     type: 'slide',              // Loop the slides
     perPage: 3,                // Show 3 slides per view
-    
     perMove: 1,                // Move 1 slide at a time
     gap: '1rem',               // Gap between slides
     autoplay: false,            // Autoplay the slider
     interval: 3000,            // Autoplay interval in milliseconds
     pauseOnHover: true,        // Pause autoplay on hover
+    pagination:false,
+
     breakpoints: {
         1200: {
         perPage: 2,             // Show 3 slides per view on screens with width >= 992px
@@ -882,12 +906,37 @@ for ( var i = 0; i < elms.length; i++ )
       992: {
         perPage: 2,             // Show 2 slides per view on screens with width >= 992px
       },
-      768: {
+      668: {
         perPage: 1,             // Show 1 slide per view on screens with width >= 768px
       }
     }
   }).mount();
 }
+
+new Splide( '#slider11',{
+    type: 'loop',              // Loop the slides
+    perPage: 4,                // Show 3 slides per view
+    perMove: 1,                // Move 1 slide at a time
+    gap: '1rem',               // Gap between slides
+    autoplay: false,            // Autoplay the slider
+    interval: 3000,            // Autoplay interval in milliseconds
+    pauseOnHover: true, 
+    pagination:false,
+        breakpoints: {
+        1200: {
+        perPage: 4,             // Show 3 slides per view on screens with width >= 992px
+      },
+      992: {
+        perPage: 3,             // Show 2 slides per view on screens with width >= 992px
+      },
+      768: {
+        perPage: 2,             // Show 1 slide per view on screens with width >= 768px
+      },
+      420: {
+        perPage: 1,             // Show 1 slide per view on screens with width >= 768px
+      }
+    }
+} ).mount();
 
 </script>
 

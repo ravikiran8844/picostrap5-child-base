@@ -70,7 +70,10 @@ body{
 }
 .custom-logo{
     margin-bottom: 10px;
-    max-width: 220px;
+    max-width: 180px !important; 
+    max-height: 50px !important; 
+    height: auto;
+    flex-shrink: 0;
 
 }
 .navbar-collapse{
@@ -168,7 +171,6 @@ margin-top: 5px;
 }
 
 .shop-by-category_img-wrapper{
-    width: 283px;
     min-height: 250px;
     flex-shrink: 0;
     display: flex;
@@ -179,7 +181,6 @@ margin-top: 5px;
     object-fit: none;
 }
 .category-container{
-    width: 283px;
     border: 1px solid #C2C2C2;
     background-color: #fff;
 }
@@ -512,16 +513,24 @@ line-height: 100%; /* 19.343px */
     align-items: flex-start;
     width: 100%;
     height: 100%;
-    padding: 40px;
+    padding: 40px 20px;
     top: 0;
 }
-.product-page_image-banner-content--title{
+.product-page_image-banner_main-title{
     color: #2D2D2D;
 font-family: Canela Trial;
 font-size: 30px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
+}
+.product-page-sections_main-title{
+    color: #A0222C;
+    font-family: Canela Trial;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 .product-page_image-banner-content--text{
     max-width: 500px;
@@ -621,28 +630,185 @@ line-height: 100%; /* 12.453px */
 
 
 
-.custom-main-menu #mega-menu-wrap-primary, .custom-main-menu  #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-current-menu-item > a.mega-menu-link {
-    background: transparent;
-}
-.custom-main-menu #mega-menu-wrap-primary:hover, .custom-main-menu  #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-current-menu-item > a.mega-menu-link:hover {
-    background: transparent;
-}
-.custom-main-menu  #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
-    color: #2D2D2D;
-    text-align: center;
-    font-family: Sharp Sans;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 100%; 
-    text-transform: uppercase;
-}
 .product-meta_border{
     border-bottom: 1px solid #C2C2C2;
     border-top:1px solid #C2C2C2;
     padding: 10px 0;
 }
+
+.products-slider-section .splide__arrow{
+    top: 100%;
+    border-radius: 41px;
+    background: #C0832B;
+    margin: 20px 0;
+}
+.products-slider-section .splide__arrow svg{
+    fill: #fff;
+}
+.products-slider-section .splide__arrow--prev{
+    right: 50px;
+    left: unset;
+}
+
+.products-slider-section .splide__arrow--next{
+    right: 10px;
+    margin-left: 10px;
+}
+.products-slider-section .splide__arrow:disabled{
+    background-color: transparent;
+    border: 2px solid #C0832B;
+}
+.products-slider-section .splide__arrow:disabled svg{
+    fill: #C0832B;
+}
+
+
+
+ 
+.shop-by-category .splide__arrow{
+    top: 0;
+    border-radius: 41px;
+    background: #C0832B;
+    margin-top:20px ;
+}
+.shop-by-category .splide__arrow svg{
+    fill: #fff;
+}
+.shop-by-category .splide__arrow--prev{
+    right: 50px;
+    left: unset;
+}
+
+.shop-by-category .splide__arrow--next{
+    right: 10px;
+    margin-left: 10px;
+}
+.shop-by-category .splide__arrow:disabled{
+    background-color: transparent;
+    border: 2px solid #C0832B;
+}
+.shop-by-category .splide__arrow:disabled svg{
+    fill: #C0832B;
+}
+
+
+
+.product-details-section__text{
+    color: #6D6D6D;
+    text-align: justify;
+    font-family: Sharp Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145.5%; /* 20.37px */
+    letter-spacing: 0.28px;
+}
+.woocommerce-product-gallery__image{
+    max-height: 462px;
+}
+.woocommerce-product-gallery__image img{
+    max-height: 462px;
+    object-fit: contain;
+}
+.flex-control-thumbs{
+    margin-top: 10px !important;
+}
+.flex-control-thumbs li{
+    background: #EFEAE6;
+    margin-right: 10px !important;
+    width: 100px;
+    max-height: 124px;
+    height: auto;
+    flex-shrink: 0;
+}
+.flex-control-thumbs li img{
+    object-fit: contain;
+    padding: 10px;
+}
+.woocommerce div.product div.images .flex-control-thumbs li img{
+    opacity: 1;
+}
+.product-page-faq-section_img{
+    width: 100%;
+    max-height: 450px;
+    flex-shrink: 0; 
+    object-fit: cover;
+    object-position: center;
+}
+.product-page-faq-section .accordion-collapse{
+    background: #F6F6F6;
+
+}
+.accordion-button:focus{
+    border: none !important;
+    box-shadow: none !important;
+}
+.accordion-button{
+    padding-left: 0;
+    padding-right: 0;
+
+}
+.product-page-faq-section .accordion-button{
+    background: #F6F6F6;
+    color: #2D2D2D;
+    font-family: Canela Trial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.42px;
+    }
+   .product-page-faq-section .accordion-body{
+        color: #6D6D6D;
+        font-family: Sharp Sans;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 18px */
+        letter-spacing: 0.24px;
+    }
 @media(min-width:768px){
+ .product-page-faq-section .accordion-body{
+        color: #6D6D6D;
+        font-family: Sharp Sans;
+        font-size: 20.701px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150.5%; /* 31.155px */
+        letter-spacing: 0.414px;
+    }
+  .product-page-faq-section .accordion-button{
+        background: #F6F6F6;
+        color: #2D2D2D;
+        font-family: Canela Trial;
+        font-size: 24.841px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.745px;
+    }
+    .custom-logo{
+        margin-bottom: 10px;
+        max-width: 300px !important; 
+        max-height: 77px !important; 
+        height: auto;
+        flex-shrink: 0;
+    
+    }
+    .product-page-faq-section_img{ 
+        width: 550.641px;
+        max-height: 681.055px;
+        flex-shrink: 0;
+    }
+.product-details-section__text{
+    color: #6D6D6D;
+font-family: Sharp Sans;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 145.5%; /* 26.19px */
+letter-spacing: 0.36px;
+}
     .product-logos-text{
         max-width: 75px;
         color: #6D6D6D;
@@ -703,8 +869,16 @@ line-height: 100%; /* 12.453px */
         text-align: center;
         background-color: transparent;
     }
-    .product-page_image-banner-content--title{
+    .product-page_image-banner_main-title{
         color: #2D2D2D;
+        font-family: Canela Trial;
+        font-size: 54px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+    }
+    .product-page-sections_main-title{
+        color: #A0222C;
         font-family: Canela Trial;
         font-size: 54px;
         font-style: normal;
@@ -975,3 +1149,83 @@ text-transform: uppercase;
 }
 
 
+
+
+
+
+.dgwt-wcas-style-pirx .dgwt-wcas-sf-wrapp{
+    background-color: transparent;
+}
+
+// mega menu
+.main-header{
+    background: #F6F6F6;
+  }
+  .wpmenucart-icon-shopping-cart-0{
+    color:#2D2D2D;
+    font-size:30px;
+  }
+  .cartcontents{
+    color:#2D2D2D;
+  }
+  .header-1{
+    height: 100px;
+    flex-shrink: 0;
+  }
+  .header-1 ul li{
+    text-align:center;
+  }
+  .header-1 ul li a{
+    color:#2D2D2D;
+    text-decoration: none;
+  }
+  .header-1 ul li img{
+    width:25px;
+    height:25px;
+  }
+  .nav-search-bar{
+    max-width: 700px;
+    flex-shrink: 0;
+  }
+  .header-2_mega-menu{
+    background:#A0222C;
+    color:#FFFFFF;
+  }
+  .header-2_mega-menu ul li {
+    color: #FFF;
+    font-family: Sharp Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 20px */
+    letter-spacing: 0.4px;
+  }
+  .mega-sub-menu{
+    background: #FFF !important;
+  }
+  .mega-sub-menu ul{
+   list-style: none;
+   margin: 0;
+    padding: 0;
+  }
+  .mega-sub-menu ul li{
+  list-style-type: none !important;
+  }
+ 
+  .mega-block-title{
+    color: #282828 !important;
+    font-family: Sharp Sans !important;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600 !important;
+    line-height: normal;
+  }
+  .mega-sub-menu ul li a{
+    color: #6D6D6D !important;
+    font-family: Sharp Sans !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 165% !important;
+    text-decoration:none !important;
+      }

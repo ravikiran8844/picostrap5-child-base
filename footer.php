@@ -62,6 +62,11 @@
 					<div class="col-12 col-sm-6 col-md-4 col-lg-4">
 						<div class="custom_footer--links-title mb-3">Contact Us</div>
 						<ul class="list-unstyled">
+						<?php if (have_rows('contact_details', 'option')) : ?>
+                <?php while (have_rows('contact_details', 'option')) : the_row();
+        
+                ?>
+						
 							<li  class="custom_footer--link-item "><span class="me-2"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M22.7 16.4002C22.7 17.7002 21.6 18.8002 20.3 18.8002H6.09999L1.29999 23.6002V4.6002C1.29999 3.3002 2.39999 2.2002 3.69999 2.2002H20.4C21.7 2.2002 22.8 3.3002 22.8 4.6002V16.4002H22.7Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
 								</svg>
@@ -70,7 +75,7 @@
 							<path d="M26 20.1998V23.7998C26 25.0998 24.9 26.1998 23.6 26.1998C23.5 26.1998 23.4 26.1998 23.4 26.1998C19.7 25.7998 16.1 24.4998 13 22.4998C10.1 20.6998 7.6 18.1998 5.8 15.2998C3.7 12.1998 2.4 8.5998 2 4.8998C1.9 3.4998 2.9 2.3998 4.2 2.2998C4.3 2.2998 4.3 2.2998 4.4 2.2998H8C9.2 2.2998 10.2 3.1998 10.4 4.3998C10.6 5.5998 10.8 6.6998 11.2 7.7998C11.5 8.6998 11.3 9.6998 10.7 10.2998L9.2 11.7998C10.9 14.7998 13.4 17.2998 16.4 18.9998L17.9 17.4998C18.6 16.7998 19.6 16.5998 20.4 16.9998C21.5 17.3998 22.6 17.6998 23.8 17.7998C25.1 17.8998 26 18.9998 26 20.1998Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
 							</svg>
 
-								</span>1800 1033916</li>
+								</span><?php the_sub_field('phone_number'); ?></li>
 							<li  class="custom_footer--link-item "><span class="me-2"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g clip-path="url(#clip0_39_1036)">
 								<path d="M25.999 5.00098H1.99902C1.72288 5.00098 1.49902 5.22483 1.49902 5.50098V22.501C1.49902 22.7771 1.72288 23.001 1.99902 23.001H25.999C26.2752 23.001 26.499 22.7771 26.499 22.501V5.50098C26.499 5.22483 26.2752 5.00098 25.999 5.00098Z" stroke="white"/>
@@ -82,7 +87,11 @@
 								</clipPath>
 								</defs>
 								</svg>
-								</span>customercare@jewelone.in</li>
+								</span><?php the_sub_field('email_address'); ?></li>
+
+
+								<?php endwhile; ?>
+           					 <?php endif; ?>
 						</ul>
 					</div>
 				</div>
