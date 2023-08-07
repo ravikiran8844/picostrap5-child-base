@@ -110,22 +110,159 @@ get_header( 'shop' ); ?>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 col-lg-8  mb-4">
-				<div>r1</div>
-			</div>
-			<div class="col-12 col-lg-4  mb-4">
-				<div>
-					<div>4.8</div>
-					<div><svg width="214" height="35" viewBox="0 0 214 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M17.5321 0.000183105L22.9472 11.2084L35.0529 13.0022L26.2925 21.7198L28.3623 34.0363L17.5321 28.2208L6.70179 34.0363L8.77162 21.7198L0 13.0022L12.1169 11.2084L17.5321 0.000183105Z" fill="#C79144"/>
-					<path d="M61.8026 0L67.2177 11.2083L79.3235 13.002L70.563 21.7196L72.6328 34.0361L61.8026 28.2206L50.9723 34.0361L53.0421 21.7196L44.2705 13.002L56.3874 11.2083L61.8026 0Z" fill="#C79144"/>
-					<path d="M106.079 0L111.495 11.2083L123.6 13.002L114.84 21.7196L116.91 34.0361L106.079 28.2206L95.2492 34.0361L97.319 21.7196L88.5586 13.002L100.664 11.2083L106.079 0Z" fill="#C79144"/>
-					<path d="M151.643 0L157.058 11.2083L169.164 13.002L160.403 21.7196L162.473 34.0361L151.643 28.2206L140.813 34.0361L142.883 21.7196L134.122 13.002L146.228 11.2083L151.643 0Z" fill="#C79144"/>
-					<path d="M195.917 0L201.332 11.2083L213.438 13.002L204.677 21.7196L206.747 34.0361L195.917 28.2206L185.087 34.0361L187.156 21.7196L178.396 13.002L190.502 11.2083L195.917 0Z" fill="#C79144"/>
-					</svg>
+			<div class="col-12 col-md-8  mb-4 product-reviews-section__items">
+				<div class="product-reviews-section__item">
+					<div class="d-flex flex-column flex-lg-row gap-3 justify-content-between">
+						<div class="d-flex gap-3">
+						<div class="product-reviews-section__item-image_wrapper">
+							<img class="img-fluid" src="/wp-content/uploads/2023/08/user1.png" alt="name">
+						</div>
+						<div>
+							<div class="product-reviews-section__item-title mb-2">Nezrin</div>
+							<div class="product-reviews-section__item-badge mb-2"><span><svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10 0.036715C7.39655 3.69663 5.31897 7.66863 3.75862 12C2.96552 9.62626 1.81034 7.54569 0 5.9096C0.0517241 5.88123 0.0948277 5.8434 0.146552 5.82449C0.612069 5.62589 1.08621 5.61643 1.55172 5.82449C1.94828 6.00417 2.27586 6.27843 2.57759 6.59997C2.78448 6.81749 2.98276 7.04446 3.18103 7.28089C3.36207 7.52677 3.5431 7.77266 3.73276 8.028C3.74138 8.00909 3.75862 7.99017 3.77586 7.97126C3.96552 7.5646 4.15517 7.14849 4.35345 6.74183C4.49138 6.44866 4.64655 6.16494 4.7931 5.88123C5.01724 5.45566 5.25 5.03009 5.48276 4.60451C5.89655 3.86686 6.34483 3.14811 6.83621 2.4672C7.24138 1.90923 7.67241 1.37963 8.14655 0.897315C8.50862 0.537943 8.89655 0.225858 9.36207 0.0556292C9.57759 -0.0200279 9.78448 -0.0105707 10 0.036715Z" fill="white"/>
+							</svg>
+							</span>Verified Buyer
+							</div>
+							<div class="product-reviews-section__item-text">14/09/2021</div>
+						</div>
+						</div>
+						<div class="pe-4">
+							<div class="d-flex justify-content-end mb-3"><svg width="134" height="22" viewBox="0 0 134 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M11.0069 0.000244141L14.4066 7.03698L22.0068 8.16314L16.5069 13.6362L17.8063 21.3687L11.0069 17.7176L4.20749 21.3687L5.50697 13.6362L0 8.16314L7.6072 7.03698L11.0069 0.000244141Z" fill="#C79144"/>
+								<path d="M38.8009 0L42.2006 7.03673L49.8008 8.1629L44.3008 13.6359L45.6003 21.3684L38.8009 17.7174L32.0014 21.3684L33.3009 13.6359L27.7939 8.1629L35.4012 7.03673L38.8009 0Z" fill="#C79144"/>
+								<path d="M66.5985 0L69.9982 7.03673L77.5984 8.1629L72.0985 13.6359L73.398 21.3684L66.5985 17.7174L59.7991 21.3684L61.0986 13.6359L55.5986 8.1629L63.1988 7.03673L66.5985 0Z" fill="#C79144"/>
+								<path d="M95.204 0L98.6037 7.03673L106.204 8.1629L100.704 13.6359L102.003 21.3684L95.204 17.7174L88.4046 21.3684L89.7041 13.6359L84.2041 8.1629L91.8043 7.03673L95.204 0Z" fill="#C79144"/>
+								<path d="M123 0L126.4 7.03673L134 8.1629L128.5 13.6359L129.799 21.3684L123 17.7174L116.2 21.3684L117.5 13.6359L112 8.1629L119.6 7.03673L123 0Z" fill="#C79144"/>
+								</svg>
+
+							</div>
+							<div class="product-reviews-section__item-text">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
+						</div>
 					</div>
-					<div>5 reviews</div>
 				</div>
+				<div class="product-reviews-section__item">
+					<div class="d-flex flex-column flex-lg-row gap-3 justify-content-between">
+						<div class="d-flex gap-3">
+						<div class="product-reviews-section__item-image_wrapper">
+							<img class="img-fluid" src="/wp-content/uploads/2023/08/user1.png" alt="name">
+						</div>
+						<div>
+							<div class="product-reviews-section__item-title mb-2">Nezrin</div>
+							<div class="product-reviews-section__item-badge mb-2"><span><svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10 0.036715C7.39655 3.69663 5.31897 7.66863 3.75862 12C2.96552 9.62626 1.81034 7.54569 0 5.9096C0.0517241 5.88123 0.0948277 5.8434 0.146552 5.82449C0.612069 5.62589 1.08621 5.61643 1.55172 5.82449C1.94828 6.00417 2.27586 6.27843 2.57759 6.59997C2.78448 6.81749 2.98276 7.04446 3.18103 7.28089C3.36207 7.52677 3.5431 7.77266 3.73276 8.028C3.74138 8.00909 3.75862 7.99017 3.77586 7.97126C3.96552 7.5646 4.15517 7.14849 4.35345 6.74183C4.49138 6.44866 4.64655 6.16494 4.7931 5.88123C5.01724 5.45566 5.25 5.03009 5.48276 4.60451C5.89655 3.86686 6.34483 3.14811 6.83621 2.4672C7.24138 1.90923 7.67241 1.37963 8.14655 0.897315C8.50862 0.537943 8.89655 0.225858 9.36207 0.0556292C9.57759 -0.0200279 9.78448 -0.0105707 10 0.036715Z" fill="white"/>
+							</svg>
+							</span>Verified Buyer
+							</div>
+							<div class="product-reviews-section__item-text">14/09/2021</div>
+						</div>
+						</div>
+						<div class="pe-4">
+							<div class="d-flex justify-content-end mb-3"><svg width="134" height="22" viewBox="0 0 134 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M11.0069 0.000244141L14.4066 7.03698L22.0068 8.16314L16.5069 13.6362L17.8063 21.3687L11.0069 17.7176L4.20749 21.3687L5.50697 13.6362L0 8.16314L7.6072 7.03698L11.0069 0.000244141Z" fill="#C79144"/>
+								<path d="M38.8009 0L42.2006 7.03673L49.8008 8.1629L44.3008 13.6359L45.6003 21.3684L38.8009 17.7174L32.0014 21.3684L33.3009 13.6359L27.7939 8.1629L35.4012 7.03673L38.8009 0Z" fill="#C79144"/>
+								<path d="M66.5985 0L69.9982 7.03673L77.5984 8.1629L72.0985 13.6359L73.398 21.3684L66.5985 17.7174L59.7991 21.3684L61.0986 13.6359L55.5986 8.1629L63.1988 7.03673L66.5985 0Z" fill="#C79144"/>
+								<path d="M95.204 0L98.6037 7.03673L106.204 8.1629L100.704 13.6359L102.003 21.3684L95.204 17.7174L88.4046 21.3684L89.7041 13.6359L84.2041 8.1629L91.8043 7.03673L95.204 0Z" fill="#C79144"/>
+								<path d="M123 0L126.4 7.03673L134 8.1629L128.5 13.6359L129.799 21.3684L123 17.7174L116.2 21.3684L117.5 13.6359L112 8.1629L119.6 7.03673L123 0Z" fill="#C79144"/>
+								</svg>
+
+							</div>
+							<div class="product-reviews-section__item-text">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
+						</div>
+					</div>
+				</div>
+				<div class="product-reviews-section__item">
+					<div class="d-flex flex-column flex-lg-row gap-3 justify-content-between">
+						<div class="d-flex gap-3">
+						<div class="product-reviews-section__item-image_wrapper">
+							<img class="img-fluid" src="/wp-content/uploads/2023/08/user1.png" alt="name">
+						</div>
+						<div>
+							<div class="product-reviews-section__item-title mb-2">Nezrin</div>
+							<div class="product-reviews-section__item-badge mb-2"><span><svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10 0.036715C7.39655 3.69663 5.31897 7.66863 3.75862 12C2.96552 9.62626 1.81034 7.54569 0 5.9096C0.0517241 5.88123 0.0948277 5.8434 0.146552 5.82449C0.612069 5.62589 1.08621 5.61643 1.55172 5.82449C1.94828 6.00417 2.27586 6.27843 2.57759 6.59997C2.78448 6.81749 2.98276 7.04446 3.18103 7.28089C3.36207 7.52677 3.5431 7.77266 3.73276 8.028C3.74138 8.00909 3.75862 7.99017 3.77586 7.97126C3.96552 7.5646 4.15517 7.14849 4.35345 6.74183C4.49138 6.44866 4.64655 6.16494 4.7931 5.88123C5.01724 5.45566 5.25 5.03009 5.48276 4.60451C5.89655 3.86686 6.34483 3.14811 6.83621 2.4672C7.24138 1.90923 7.67241 1.37963 8.14655 0.897315C8.50862 0.537943 8.89655 0.225858 9.36207 0.0556292C9.57759 -0.0200279 9.78448 -0.0105707 10 0.036715Z" fill="white"/>
+							</svg>
+							</span>Verified Buyer
+							</div>
+							<div class="product-reviews-section__item-text">14/09/2021</div>
+						</div>
+						</div>
+						<div class="pe-4">
+							<div class="d-flex justify-content-end mb-3"><svg width="134" height="22" viewBox="0 0 134 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M11.0069 0.000244141L14.4066 7.03698L22.0068 8.16314L16.5069 13.6362L17.8063 21.3687L11.0069 17.7176L4.20749 21.3687L5.50697 13.6362L0 8.16314L7.6072 7.03698L11.0069 0.000244141Z" fill="#C79144"/>
+								<path d="M38.8009 0L42.2006 7.03673L49.8008 8.1629L44.3008 13.6359L45.6003 21.3684L38.8009 17.7174L32.0014 21.3684L33.3009 13.6359L27.7939 8.1629L35.4012 7.03673L38.8009 0Z" fill="#C79144"/>
+								<path d="M66.5985 0L69.9982 7.03673L77.5984 8.1629L72.0985 13.6359L73.398 21.3684L66.5985 17.7174L59.7991 21.3684L61.0986 13.6359L55.5986 8.1629L63.1988 7.03673L66.5985 0Z" fill="#C79144"/>
+								<path d="M95.204 0L98.6037 7.03673L106.204 8.1629L100.704 13.6359L102.003 21.3684L95.204 17.7174L88.4046 21.3684L89.7041 13.6359L84.2041 8.1629L91.8043 7.03673L95.204 0Z" fill="#C79144"/>
+								<path d="M123 0L126.4 7.03673L134 8.1629L128.5 13.6359L129.799 21.3684L123 17.7174L116.2 21.3684L117.5 13.6359L112 8.1629L119.6 7.03673L123 0Z" fill="#C79144"/>
+								</svg>
+
+							</div>
+							<div class="product-reviews-section__item-text">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
+						</div>
+					</div>
+				</div>
+				<div class="product-reviews-section__item">
+					<div class="d-flex flex-column flex-lg-row gap-3 justify-content-between">
+						<div class="d-flex gap-3">
+						<div class="product-reviews-section__item-image_wrapper">
+							<img class="img-fluid" src="/wp-content/uploads/2023/08/user1.png" alt="name">
+						</div>
+						<div>
+							<div class="product-reviews-section__item-title mb-2">Nezrin</div>
+							<div class="product-reviews-section__item-badge mb-2"><span><svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10 0.036715C7.39655 3.69663 5.31897 7.66863 3.75862 12C2.96552 9.62626 1.81034 7.54569 0 5.9096C0.0517241 5.88123 0.0948277 5.8434 0.146552 5.82449C0.612069 5.62589 1.08621 5.61643 1.55172 5.82449C1.94828 6.00417 2.27586 6.27843 2.57759 6.59997C2.78448 6.81749 2.98276 7.04446 3.18103 7.28089C3.36207 7.52677 3.5431 7.77266 3.73276 8.028C3.74138 8.00909 3.75862 7.99017 3.77586 7.97126C3.96552 7.5646 4.15517 7.14849 4.35345 6.74183C4.49138 6.44866 4.64655 6.16494 4.7931 5.88123C5.01724 5.45566 5.25 5.03009 5.48276 4.60451C5.89655 3.86686 6.34483 3.14811 6.83621 2.4672C7.24138 1.90923 7.67241 1.37963 8.14655 0.897315C8.50862 0.537943 8.89655 0.225858 9.36207 0.0556292C9.57759 -0.0200279 9.78448 -0.0105707 10 0.036715Z" fill="white"/>
+							</svg>
+							</span>Verified Buyer
+							</div>
+							<div class="product-reviews-section__item-text">14/09/2021</div>
+						</div>
+						</div>
+						<div class="pe-4">
+							<div class="d-flex justify-content-end mb-3"><svg width="134" height="22" viewBox="0 0 134 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M11.0069 0.000244141L14.4066 7.03698L22.0068 8.16314L16.5069 13.6362L17.8063 21.3687L11.0069 17.7176L4.20749 21.3687L5.50697 13.6362L0 8.16314L7.6072 7.03698L11.0069 0.000244141Z" fill="#C79144"/>
+								<path d="M38.8009 0L42.2006 7.03673L49.8008 8.1629L44.3008 13.6359L45.6003 21.3684L38.8009 17.7174L32.0014 21.3684L33.3009 13.6359L27.7939 8.1629L35.4012 7.03673L38.8009 0Z" fill="#C79144"/>
+								<path d="M66.5985 0L69.9982 7.03673L77.5984 8.1629L72.0985 13.6359L73.398 21.3684L66.5985 17.7174L59.7991 21.3684L61.0986 13.6359L55.5986 8.1629L63.1988 7.03673L66.5985 0Z" fill="#C79144"/>
+								<path d="M95.204 0L98.6037 7.03673L106.204 8.1629L100.704 13.6359L102.003 21.3684L95.204 17.7174L88.4046 21.3684L89.7041 13.6359L84.2041 8.1629L91.8043 7.03673L95.204 0Z" fill="#C79144"/>
+								<path d="M123 0L126.4 7.03673L134 8.1629L128.5 13.6359L129.799 21.3684L123 17.7174L116.2 21.3684L117.5 13.6359L112 8.1629L119.6 7.03673L123 0Z" fill="#C79144"/>
+								</svg>
+
+							</div>
+							<div class="product-reviews-section__item-text">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
+						</div>
+					</div>
+				</div>
+
+				
+			</div>
+			
+			<div class="col-12 col-md-4  mb-4">
+				<div class="product-reviews-section__box2">
+					<div class="text-center">
+						<div class="product-reviews-section__box2_review-count mb-2 m-auto">4.8</div>
+							<div class="mb-2"><svg width="134" height="22" viewBox="0 0 134 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M11.0069 0.000244141L14.4066 7.03698L22.0068 8.16314L16.5069 13.6362L17.8063 21.3687L11.0069 17.7176L4.20749 21.3687L5.50697 13.6362L0 8.16314L7.6072 7.03698L11.0069 0.000244141Z" fill="#C79144"/>
+							<path d="M38.8009 0L42.2006 7.03673L49.8008 8.1629L44.3008 13.6359L45.6003 21.3684L38.8009 17.7174L32.0014 21.3684L33.3009 13.6359L27.7939 8.1629L35.4012 7.03673L38.8009 0Z" fill="#C79144"/>
+							<path d="M66.5985 0L69.9982 7.03673L77.5984 8.1629L72.0985 13.6359L73.398 21.3684L66.5985 17.7174L59.7991 21.3684L61.0986 13.6359L55.5986 8.1629L63.1988 7.03673L66.5985 0Z" fill="#C79144"/>
+							<path d="M95.204 0L98.6037 7.03673L106.204 8.1629L100.704 13.6359L102.003 21.3684L95.204 17.7174L88.4046 21.3684L89.7041 13.6359L84.2041 8.1629L91.8043 7.03673L95.204 0Z" fill="#C79144"/>
+							<path d="M123 0L126.4 7.03673L134 8.1629L128.5 13.6359L129.799 21.3684L123 17.7174L116.2 21.3684L117.5 13.6359L112 8.1629L119.6 7.03673L123 0Z" fill="#C79144"/>
+							</svg>
+
+							</div>
+							<div class="mb-4">5 reviews</div>
+						</div>
+					</div>
+					<div>
+						<button class="write-review-btn">Write a Review</button>
+						<div class="review-form-wrapper" style="display: none;">
+							<?php
+								comment_form( array(
+									'title_reply' => '',
+									'comment_field' => '<textarea id="comment" name="comment" class="form-control" aria-required="true"></textarea>',
+									'label_submit' => 'Submit Review',
+								) );
+							?>
+						</div>
+					</div>
 			</div>
 		</div>
 	</div>
@@ -133,7 +270,7 @@ get_header( 'shop' ); ?>
 
 
 
-<div class="product-page-faq-section mt-5">
+<div class="product-page-faq-section my-5">
 	<div class="container">
 			<div class="row">
 				<div class="col-12 col-md-5 mb-4">
@@ -217,6 +354,20 @@ get_header( 'shop' ); ?>
 		do_action( 'woocommerce_sidebar' );
 	?>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var writeReviewBtn = document.querySelector('.write-review-btn');
+        var reviewFormWrapper = document.querySelector('.review-form-wrapper');
+
+        writeReviewBtn.addEventListener('click', function() {
+            if (reviewFormWrapper.style.display === 'none') {
+                reviewFormWrapper.style.display = 'block';
+            } else {
+                reviewFormWrapper.style.display = 'none';
+            }
+        });
+    });
+</script>
 <?php
 get_footer( 'shop' );
 

@@ -89,7 +89,15 @@ flex-wrap: nowrap;
     width: 210px;
     margin-right: 10px;
 }
-
+.check-order-btn{
+    background: #2D2D2D;
+    color: #FFF;
+    font-family: Sharp Sans;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
 .woo-variation-swatches .variable-items-wrapper .variable-item:not(.radio-variable-item).button-variable-item.selected:not(.no-stock){
     background: #A0222C;
     color: #FFF;
@@ -767,7 +775,285 @@ line-height: 100%; /* 12.453px */
         line-height: 150%; /* 18px */
         letter-spacing: 0.24px;
     }
+    .footer-twitter-icon{
+        background: #1DA1F2;
+    }
+    .footer-twitter-icon svg{
+        padding: 5px;
+    }
+
+    .instagram-section_heading{
+        color: #A0222C;
+        font-family: Sharp Sans;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 108.5%; /* 26.04px */
+        text-transform: uppercase;
+    }
+    .instagram-section_heading svg{
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+    }
+    .instagram-section_text{
+        color: #222;
+        text-align: center;
+        font-family: Sharp Sans;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 0%; /* 0px */
+        text-transform: capitalize;
+    }
+    .instagram-section_text b{
+        color: #222;
+        font-family: Sharp Sans;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 0%;
+        text-transform: uppercase;
+    }
+
+    .product-reviews-section__item-text{
+        color: #6D6D6D;
+font-family: Sharp Sans;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 145.5%; /* 17.46px */
+letter-spacing: 0.24px;
+    }
+    .product-reviews-section__item-title{
+        color: #2D2D2D;
+        font-family: Sharp Sans;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 0.35px;
+        text-transform: capitalize;
+    }
+    .product-reviews-section__item-badge{
+        border-radius: 1.636px;
+        background: #62BD54;
+        color: #FFF;
+        font-family: Sharp Sans;
+        font-size: 11.45px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.286px;
+        text-transform: capitalize;
+        width: max-content;
+        height: 25.354px;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .product-reviews-section__item-image_wrapper{
+        width: 114px;
+height: 114px;
+flex-shrink: 0;
+background-color: #D9D9D9;
+border-radius: 50%;
+    }
+    .product-reviews-section__item-image_wrapper img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        max-width: 114px;
+    max-height: 114px;
+    border-radius: 50%;
+
+    }
+    .product-reviews-section__item{
+        border-bottom: 1px solid #C2C2C2;
+    padding:10px;
+    }
+    .product-reviews-section__items{
+        border-right: none;
+    }
+    .stretched-link,.stretched-link:hover{
+        color: #000;
+        font-family: Canela Trial;
+        font-style: normal;
+        font-weight: 500;
+        text-decoration: none;
+    }
+    .picostrap-read-more-link{
+        color: #2D2D2D;
+        font-family: Sharp Sans;
+    }
+    .woocommerce-variation-price ins{
+        text-decoration: none;
+        color: #2D2D2D;
+        text-align: center;
+        font-family: Sharp Sans;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 100%; /* 40px */
+    }
+    .woocommerce-variation-price del{
+        color: #6D6D6D;
+    }
+    .woocommerce div.product p.price{
+        color: #A0222C;
+        font-family: Canela Trial;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+    }
+  .product-reviews-section__box2_review-count{
+    color: #FFF;
+    text-align: center;
+    font-family: Canela Trial;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-transform: capitalize;
+    background: #A0222C;
+    width: 116px;
+    height: 116px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-reviews-section__box2-text{
+    color: #222;
+text-align: center;
+font-family: Sharp Sans;
+font-size: 18.256px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+  }
+  .write-review-btn{
+    border: 0.913px solid rgba(39, 47, 55, 0.00);
+    background: #C79144;
+    width: 100%;
+    padding: 10px;
+    color: #FFF;
+text-align: center;
+font-family: Sharp Sans;
+font-size: 16.431px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-transform: uppercase;
+  }
+.breadcrumbs a,.breadcrumbs .separator{
+    color: #6D6D6D;
+font-family: Sharp Sans;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-transform: uppercase;
+text-decoration: none;
+}
+.breadcrumbs .current{
+    color: #A0222C;
+font-family: Sharp Sans;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-transform: uppercase;
+}  
+.sidebar-nav-link{
+color: #6D6D6D;
+font-family: Sharp Sans;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: 200%;
+text-transform: uppercase;
+text-decoration: none;
+}
+.sidebar-nav-link.active{
+    color: #2D2D2D;
+font-family: Sharp Sans;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 200%;
+text-transform: uppercase;
+text-decoration: none;
+}
+.sidebar-nav-link.active::before{
+    content: url('data:image/svg+xml;utf8,<svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M-0.000217438 10.2424L8.89453 5.12121L-0.000217885 -5.33324e-06C1.36245 3.27937 1.36245 6.94808 -0.000217438 10.2424Z" fill="%232D2D2D"/></svg>');
+    margin-right: 10px; /* Adjust the spacing between icon and text */
+}
 @media(min-width:768px){
+    .product-reviews-section__box2-text{
+        color: #222;
+        text-align: center;
+        font-family: Sharp Sans;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+    .product-reviews-section__items{
+        border-right: 1px solid #C2C2C2;
+    }
+    .product-reviews-section__item-title{
+        color: #2D2D2D;
+        font-family: Sharp Sans;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.375px;
+        text-transform: capitalize;
+    }
+    .product-reviews-section__item-text{
+        color: #6D6D6D;
+        font-family: Sharp Sans;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 145.5%; /* 26.19px */
+        letter-spacing: 0.36px;
+    }
+    .instagram-section_text{
+        color: #222;
+        text-align: center;
+        font-family: Sharp Sans;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: capitalize;
+    }
+    .instagram-section_text b{
+        color: #222;
+        font-family: Sharp Sans;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+    }
+    .instagram-section_heading{
+        color: #A0222C;
+        font-family: Sharp Sans;
+        font-size: 34px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 108.5%; /* 36.89px */
+        text-transform: uppercase;
+    }
  .product-page-faq-section .accordion-body{
         color: #6D6D6D;
         font-family: Sharp Sans;
