@@ -16,8 +16,8 @@
 		
 		
 		<div class="wrapper custom_footer py-3" id="wrapper-footer-colophon">
-			<div class="container">
-				<div class="row mb-4 py-4">
+			<div class="container-lg">
+				<div class="row g-4 mb-4 py-4">
 					<div class="col-12 col-lg-4 mb-4 text-center text-lg-start">
 						<div class="mb-3">
 							<img class="img-fluid" width="200" height="300" src="/wp-content/uploads/2023/08/jewelone-footer-logo.png" alt="">
@@ -25,9 +25,9 @@
 						<div class="custom_footer--text mb-3 text-center text-lg-start ">Subscribe to email alerts. We promise not to spam your inbox.</div>
 						<div>subscribe</div>
 					</div>
-					<div class="col-6 col-md-4 col-lg-2">
+					<div class="col-6 col-md">
 						<div class="custom_footer--links-title mb-3">Useful Links</div>
-						<div>
+						<div  class="footer-link-items_wrapper">
 						<?php 
 						// Replace 'custom-menu' with the name or location of your custom menu
 						$menu_items = wp_get_nav_menu_items('useful-links');
@@ -36,15 +36,15 @@
 							foreach ($menu_items as $menu_item) {
 								// Output or manipulate each menu item as needed
 								$class = 'custom_footer--link-item '; // Add your custom class name here
-								echo '<a href="' . esc_url($menu_item->url) . '" class="' . esc_attr($class) . '">' . esc_html($menu_item->title) . '</a><br>';
+								echo '<a href="' . esc_url($menu_item->url) . '" class="' . esc_attr($class) . '">' . esc_html($menu_item->title) . '</a>';
 							}
 						}
 						?>
 						</div>
 					</div>
-					<div class="col-6 col-md-4 col-lg-2">
+					<div class="col-6 col-md">
 						<div class="custom_footer--links-title mb-3">Information</div>
-						<div>
+						<div class="footer-link-items_wrapper">
 						<?php 
 						// Replace 'custom-menu' with the name or location of your custom menu
 						$menu_items = wp_get_nav_menu_items('information');
@@ -53,53 +53,53 @@
 							foreach ($menu_items as $menu_item) {
 								// Output or manipulate each menu item as needed
 								$class = 'custom_footer--link-item '; // Add your custom class name here
-								echo '<a href="' . esc_url($menu_item->url) . '" class="' . esc_attr($class) . '">' . esc_html($menu_item->title) . '</a><br>';
+								echo '<a href="' . esc_url($menu_item->url) . '" class="' . esc_attr($class) . '">' . esc_html($menu_item->title) . '</a>';
 							}
 						}
 						?>
 						</div>
 					</div>
-					<div class="col-12 col-sm-6 col-md-4 col-lg-4">
+					<div class="col-12 col-sm-6 col-md">
 						<div class="custom_footer--links-title mb-3">Contact Us</div>
 						<ul class="list-unstyled">
 						<?php if (have_rows('contact_details', 'option')) : ?>
-                <?php while (have_rows('contact_details', 'option')) : the_row();
-        
-                ?>
-						
-							<li  class="custom_footer--link-item "><span class="me-2"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M22.7 16.4002C22.7 17.7002 21.6 18.8002 20.3 18.8002H6.09999L1.29999 23.6002V4.6002C1.29999 3.3002 2.39999 2.2002 3.69999 2.2002H20.4C21.7 2.2002 22.8 3.3002 22.8 4.6002V16.4002H22.7Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-								</span>Chat with Us</li>
-							<li  class="custom_footer--link-item "><span class="me-2"><svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M26 20.1998V23.7998C26 25.0998 24.9 26.1998 23.6 26.1998C23.5 26.1998 23.4 26.1998 23.4 26.1998C19.7 25.7998 16.1 24.4998 13 22.4998C10.1 20.6998 7.6 18.1998 5.8 15.2998C3.7 12.1998 2.4 8.5998 2 4.8998C1.9 3.4998 2.9 2.3998 4.2 2.2998C4.3 2.2998 4.3 2.2998 4.4 2.2998H8C9.2 2.2998 10.2 3.1998 10.4 4.3998C10.6 5.5998 10.8 6.6998 11.2 7.7998C11.5 8.6998 11.3 9.6998 10.7 10.2998L9.2 11.7998C10.9 14.7998 13.4 17.2998 16.4 18.9998L17.9 17.4998C18.6 16.7998 19.6 16.5998 20.4 16.9998C21.5 17.3998 22.6 17.6998 23.8 17.7998C25.1 17.8998 26 18.9998 26 20.1998Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-							</svg>
+							<?php while (have_rows('contact_details', 'option')) : the_row();
+					
+							?>
+									
+										<li  class="custom_footer--link-item "><span class="me-2"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M22.7 16.4002C22.7 17.7002 21.6 18.8002 20.3 18.8002H6.09999L1.29999 23.6002V4.6002C1.29999 3.3002 2.39999 2.2002 3.69999 2.2002H20.4C21.7 2.2002 22.8 3.3002 22.8 4.6002V16.4002H22.7Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+											</svg>
+											</span>Chat with Us</li>
+										<li  class="custom_footer--link-item "><span class="me-2"><svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M26 20.1998V23.7998C26 25.0998 24.9 26.1998 23.6 26.1998C23.5 26.1998 23.4 26.1998 23.4 26.1998C19.7 25.7998 16.1 24.4998 13 22.4998C10.1 20.6998 7.6 18.1998 5.8 15.2998C3.7 12.1998 2.4 8.5998 2 4.8998C1.9 3.4998 2.9 2.3998 4.2 2.2998C4.3 2.2998 4.3 2.2998 4.4 2.2998H8C9.2 2.2998 10.2 3.1998 10.4 4.3998C10.6 5.5998 10.8 6.6998 11.2 7.7998C11.5 8.6998 11.3 9.6998 10.7 10.2998L9.2 11.7998C10.9 14.7998 13.4 17.2998 16.4 18.9998L17.9 17.4998C18.6 16.7998 19.6 16.5998 20.4 16.9998C21.5 17.3998 22.6 17.6998 23.8 17.7998C25.1 17.8998 26 18.9998 26 20.1998Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+										</svg>
 
-								</span><?php the_sub_field('phone_number'); ?></li>
-							<li  class="custom_footer--link-item "><span class="me-2"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<g clip-path="url(#clip0_39_1036)">
-								<path d="M25.999 5.00098H1.99902C1.72288 5.00098 1.49902 5.22483 1.49902 5.50098V22.501C1.49902 22.7771 1.72288 23.001 1.99902 23.001H25.999C26.2752 23.001 26.499 22.7771 26.499 22.501V5.50098C26.499 5.22483 26.2752 5.00098 25.999 5.00098Z" stroke="white"/>
-								<path d="M26.246 5.24902L14.334 18.03C14.2931 18.074 14.2436 18.1091 14.1886 18.1331C14.1335 18.157 14.0741 18.1694 14.014 18.1694C13.954 18.1694 13.8946 18.157 13.8395 18.1331C13.7845 18.1091 13.7349 18.074 13.694 18.03L1.75104 5.24902" stroke="white"/>
-								</g>
-								<defs>
-								<clipPath id="clip0_39_1036">
-								<rect width="27.999" height="27.999" fill="white"/>
-								</clipPath>
-								</defs>
-								</svg>
-								</span><?php the_sub_field('email_address'); ?></li>
+											</span><?php the_sub_field('phone_number'); ?></li>
+										<li  class="custom_footer--link-item "><span class="me-2"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<g clip-path="url(#clip0_39_1036)">
+											<path d="M25.999 5.00098H1.99902C1.72288 5.00098 1.49902 5.22483 1.49902 5.50098V22.501C1.49902 22.7771 1.72288 23.001 1.99902 23.001H25.999C26.2752 23.001 26.499 22.7771 26.499 22.501V5.50098C26.499 5.22483 26.2752 5.00098 25.999 5.00098Z" stroke="white"/>
+											<path d="M26.246 5.24902L14.334 18.03C14.2931 18.074 14.2436 18.1091 14.1886 18.1331C14.1335 18.157 14.0741 18.1694 14.014 18.1694C13.954 18.1694 13.8946 18.157 13.8395 18.1331C13.7845 18.1091 13.7349 18.074 13.694 18.03L1.75104 5.24902" stroke="white"/>
+											</g>
+											<defs>
+											<clipPath id="clip0_39_1036">
+											<rect width="27.999" height="27.999" fill="white"/>
+											</clipPath>
+											</defs>
+											</svg>
+											</span><?php the_sub_field('email_address'); ?></li>
 
 
-								<?php endwhile; ?>
-           					 <?php endif; ?>
-						</ul>
-					</div>
-				</div>
-				<div class="row mb-4">
-				<?php if (have_rows('social_links', 'option')) : ?>
-                <?php while (have_rows('social_links', 'option')) : the_row();
-        
-                ?>
+											<?php endwhile; ?>
+										<?php endif; ?>
+									</ul>
+								</div>
+							</div>
+							<div class="row mb-4">
+							<?php if (have_rows('social_links', 'option')) : ?>
+							<?php while (have_rows('social_links', 'option')) : the_row();
+					
+							?>
 					<div class="col-12 custom_footer--logos_wrapper">
 						<div class="d-flex gap-3">
 							<div>
@@ -140,7 +140,7 @@
                 ?>
 					<div class="col-12 col-md-6 mb-4">
 						<div class="custom_footer--bold-text mb-3">Swarna Shakti App Download</div>
-						<div class="d-flex">
+						<div class="d-flex gap-2">
 						<div>
 								<a target="_blank" href="<?php the_sub_field('app_store'); ?>"><img class="img-fluid" width="180" height="60" src="/wp-content/uploads/2023/08/app-store.png" alt=""></a>
 							</div>

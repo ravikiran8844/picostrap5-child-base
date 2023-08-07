@@ -59,8 +59,16 @@ IMPORTANT NOTE REGARDING REFERENCING ELEMENTS IN THE THEME FOLDER
 @font-face {
     font-family: Sharp Sans;
      src: url('../fonts/Sharp-Sans.woff') format('woff2');
+     font-weight: 400;
      font-display: swap;
 }
+@font-face {
+    font-family: Sharp Sans;
+     src: url('../fonts/Sharp-Sans Semibold.woff') format('woff2');
+     font-weight: 500;
+     font-display: swap;
+}
+
 h1,h2,.fs-1,.fs-2{
     font-family: Canela Trial;
 }
@@ -994,7 +1002,79 @@ text-decoration: none;
     content: url('data:image/svg+xml;utf8,<svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M-0.000217438 10.2424L8.89453 5.12121L-0.000217885 -5.33324e-06C1.36245 3.27937 1.36245 6.94808 -0.000217438 10.2424Z" fill="%232D2D2D"/></svg>');
     margin-right: 10px; /* Adjust the spacing between icon and text */
 }
+.custom_footer--link-item {
+    display: flex;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+
+.product-details-section .nav-pills .nav-link{
+border-radius: 0;
+border-bottom: 1px solid #CECECE;
+color: #A8A8A8;
+font-family: Sharp Sans;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+padding: 5px 10px;
+}
+.product-details-section .nav-pills .nav-link.active{
+    color: #2D2D2D;
+font-family: Sharp Sans;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+border-bottom: 2px solid #3D3D3D;
+background-color: transparent;
+
+}
+.product-details-section .title{
+    color: #2D2D2D;
+    font-family: Sharp Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.product-details-section .text{
+    color: #6D6D6D;
+    font-family: Sharp Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.product-details-section .accordion-button{
+    background: #F6F6F6;
+    color: #2D2D2D;
+    font-family: Sharp Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    border-top: 1px solid #C2C2C2;
+    border-bottom: 1px solid #C2C2C2;
+}
+.product-details-section .accordion-flush .accordion-item:last-child, .product-details-section .accordion-flush .accordion-item:first-child{
+    border-top: 1px solid #C2C2C2;
+    border-bottom: 1px solid #C2C2C2;
+}
+.product-details-section .accordion-body{
+    background: #F6F6F6;
+    padding: 10px 0;
+
+}
+
 @media(min-width:768px){
+    .footer-link-items_wrapper{
+        border-right: 1px solid #CA4F5A;
+        height: 180px;
+        padding-right: 5px;
+    }
     .product-reviews-section__box2-text{
         color: #222;
         text-align: center;

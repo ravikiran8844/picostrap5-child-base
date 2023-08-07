@@ -62,9 +62,81 @@ get_header( 'shop' ); ?>
 
 <div class="container product-details-section mt-5">
 	<div class="row">
-			<div class="col-12 col-lg-6 mb-4">
-				<div class="product-page-sections_main-title">Product Details</div>
+			<div class="col-12 col-lg-6 mb-5">
+				<div class="product-page-sections_main-title mb-4">Product Details</div>
+				<div>
+								<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+				<li class="nav-item" role="presentation">
+					<button class="nav-link active" id="pills-Desc-tab" data-bs-toggle="pill" data-bs-target="#pills-Desc" type="button" role="tab" >DESCRIPTION</button>
+				</li>
+				<li class="nav-item" role="presentation">
+					<button class="nav-link" id="pills-details-tab" data-bs-toggle="pill" data-bs-target="#pills-details" type="button" role="tab" >DETAILS</button>
+				</li>
+				<li class="nav-item" role="presentation">
+					<button class="nav-link" id="pills-warranty-tab" data-bs-toggle="pill" data-bs-target="#pills-warranty" type="button" role="tab" >WARRANTY & SHIPPING</button>
+				</li>
+				
+				</ul>
+				<div class="tab-content" id="pills-tabContent">
+				<div class="tab-pane fade show active" id="pills-Desc" role="tabpanel" tabindex="0">
+				DESCRIPTION
+				</div>
+				<div class="tab-pane fade" id="pills-details" role="tabpanel"  tabindex="0">
+					<div class="row">
+						<div class="col-4 mb-4">
+							<div class="title">Product Code</div>
+							<div class="text">RNG001211203</div>
+						</div>
+						<div class="col-4 mb-4">
+							<div class="title">Article Code</div>
+							<div class="text">RNG</div>
+						</div>
+						<div class="col-4 mb-4">
+							<div class="title">Height</div>
+							<div class="text">NA</div>
+						</div>
+						<div class="col-4 mb-4">
+							<div class="title">Width</div>
+							<div class="text">NA</div>
+						</div>
+						<div class="col-4 mb-4">
+							<div class="title">Product Weight</div>
+							<div class="text">NA</div>
+						</div>
+						<div class="col-4 mb-4">
+							<div class="title">Net Weight</div>
+							<div class="text">NA</div>
+						</div>
+						<div class="col-4 mb-4">
+							<div class="title">Type</div>
+							<div class="text">NA</div>
+						</div>
+						<div class="col-4 mb-4">
+							<div class="title">Product Weight</div>
+							<div class="text">NA</div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="tab-pane fade" id="pills-warranty" role="tabpanel" tabindex="0">WARRANTY & SHIPPING</div>
+				</div>
+				</div>
+
+				<div class="accordion accordion-flush mt-5 mb-3" id="price-breakup">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-price-breakup" aria-expanded="false" aria-controls="flush-collapseOne">
+							PRICE BREAKUP
+							</button>
+							</h2>
+							<div id="flush-price-breakup" class="accordion-collapse collapse" data-bs-parent="#price-breakup">
+							<div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+							</div>
+						</div>
+				</div>
+
 			</div>
+
 			<div class="col-12 col-lg-6">
 				<div class="mb-4">
 					<img src="/wp-content/uploads/2023/08/product-details-banner-img.webp" alt="">
