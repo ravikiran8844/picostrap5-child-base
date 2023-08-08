@@ -14,12 +14,15 @@ get_header();
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/splidejs/4.1.4/css/splide.min.css" integrity="sha512-KhFXpe+VJEu5HYbJyKQs9VvwGB+jQepqb4ZnlhUF/jQGxYJcjdxOTf6cr445hOc791FFLs18DKVpfrQnONOB1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-<div class="main-slider-section">
+<div id="main-slider" class="main-slider-section">
     <div class="container-fluid">
-        <div class="row" data-flickity='{ "cellAlign": "left", "contain": true}'>
+        <div class="row" data-flickity='{ "cellAlign": "left", "contain": true,"wrapAround": true}'>
 
             <?php if (have_rows('slider_section')) : ?>
+                <?php $slide_counter = 0; // Initialize slide counter ?>
+                <?php $total_slides = count(get_field('slider_section')); // Get total number of slides ? ?>
                 <?php while (have_rows('slider_section')) : the_row();
+                    $slide_counter++; // Increment slide counter
                     $slide_desktop_image = get_sub_field('slide_image');
                     $slide_mobile_image = get_sub_field('slide_mobile_image');
                     $slide_slide_icon = get_sub_field('slide_icon');
@@ -32,7 +35,7 @@ get_header();
                     <div class="col-12">
                         <div class="main-slider-section_item">
                             <picture>
-                                <source media="(max-width:768px)" srcset="<?php echo esc_url($slide_mobile_image['url']); ?>">
+                                <source media="(max-width:767px)" srcset="<?php echo esc_url($slide_mobile_image['url']); ?>">
                                 <img class="img-fluid" src="<?php echo esc_url($slide_desktop_image['url']); ?>" alt="">
                             </picture>
                             <div class="main-slider-section_item-content">
@@ -55,13 +58,25 @@ get_header();
                                         <a class="btn btn-outline-light px-4 py-2" href="<?php echo $slide_slide_link ?>"><?php echo $slide_slide_link_text ?></a>
                                     <?php endif; ?>
                                 </div>
+                            <!-- Display current slide number and total slides number -->
+                            <span class="slide-counter">
+                            <span class="current-slide"><?php echo sprintf('%02d', $slide_counter); ?></span>
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="2" height="35" viewBox="0 0 2 35" fill="none">
+                                <path d="M0.980469 0.789062V34.1361" stroke="white" stroke-width="1.51577"/>
+                                </svg></span>
+                                <?php
+                                        $next_slide_number = ($slide_counter === $total_slides) ? 1 : ($slide_counter + 1);
+                                    ?>
+                                    <span class="next-slide"><?php echo sprintf('%02d', $next_slide_number); ?></span>
                             </div>
+                             
                         </div>
                     </div>
 
                 <?php endwhile; ?>
             <?php endif; ?>
         </div>
+
     </div>
 </div>
 
@@ -901,7 +916,7 @@ for ( var i = 0; i < elms.length; i++ )
 {
   new Splide(elms[i], {
     type: 'slide',              // Loop the slides
-    perPage: 3,                // Show 3 slides per view
+    perPage: 4,                // Show 3 slides per view
     perMove: 1,                // Move 1 slide at a time
     gap: '1rem',               // Gap between slides
     autoplay: false,            // Autoplay the slider
@@ -911,12 +926,12 @@ for ( var i = 0; i < elms.length; i++ )
 
     breakpoints: {
         1200: {
-        perPage: 2,             // Show 3 slides per view on screens with width >= 992px
+        perPage: 3,             // Show 3 slides per view on screens with width >= 992px
       },
       992: {
         perPage: 2,             // Show 2 slides per view on screens with width >= 992px
       },
-      668: {
+      568: {
         perPage: 1,             // Show 1 slide per view on screens with width >= 768px
       }
     }
@@ -925,9 +940,9 @@ for ( var i = 0; i < elms.length; i++ )
 
 new Splide( '#slider11',{
     type: 'loop',              // Loop the slides
-    perPage: 4,                // Show 3 slides per view
+    perPage: 5,                // Show 3 slides per view
     perMove: 1,                // Move 1 slide at a time
-    gap: '1rem',               // Gap between slides
+    gap: '5px',               // Gap between slides
     autoplay: false,            // Autoplay the slider
     interval: 3000,            // Autoplay interval in milliseconds
     pauseOnHover: true, 
@@ -947,6 +962,23 @@ new Splide( '#slider11',{
       }
     }
 } ).mount();
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+   
+// Get all buttons with the specified class
+const buttons = document.querySelectorAll('.flickity-prev-next-button');
+
+// Loop through each button and update the SVG path
+buttons.forEach(button => {
+    const pathElement = button.querySelector('path');
+    pathElement.setAttribute('d', 'M 0,50 L 60,00 L 50,30 L 80,30 L 80,70 L 50,70 L 60,100 Z');
+});
+});
+
+
 
 </script>
 

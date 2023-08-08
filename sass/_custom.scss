@@ -252,7 +252,6 @@ letter-spacing: 0.281px;
 }
 .product-slider-item{
     width: 357px;
-    min-height:500px;
     height: auto;
 }
 .body-text-dark{
@@ -1068,8 +1067,59 @@ background-color: transparent;
     padding: 10px 0;
 
 }
+.main-slider-section .flickity-button{
+    display: none;
+}
+.main-slider-section .flickity-prev-next-button{
+    top: 90% !important;
+}
+.main-slider-section .flickity-prev-next-button.next{
+    left: 175px;
+}
+.main-slider-section .flickity-page-dots{
+    display: block;
+}
+.main-slider-section .slide-counter{
+    display: none;
+}
 
 @media(min-width:768px){
+    .flickity-button svg{
+        fill: #fff;
+    }
+    .main-slider-section .slide-counter {
+        display: block;
+        position: absolute;
+        top: 85%;
+        left: 70px;
+        color: #FFF;
+        font-family: Cotta;
+        font-size: 45.473px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        }
+        .main-slider-section .next-slide{
+            color: rgba(255, 255, 255, 0.75);
+            font-family: Cotta;
+            font-size: 27.284px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    
+    .main-slider-section .flickity-page-dots{
+        display: none;
+    }
+    .main-slider-section .flickity-button{
+        display: block;
+        background: transparent;
+
+    }
+    .main-slider-section .flickity-button:hover{
+        background: transparent;
+
+    }
     .footer-link-items_wrapper{
         border-right: 1px solid #CA4F5A;
         height: 180px;
@@ -1470,6 +1520,9 @@ text-transform: uppercase;
         font-weight: 400;
         line-height: 130%; /* 31.2px */
         letter-spacing: 0.48px;
+    }
+    .products-slider-section  .card-main-title{
+        height: 62px;
     }
     .card-sub-title{
         color: #6D6D6D;
